@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://apmtips.com
+title: APM tips blog
+subtitle: Blog about application monitoring.
+author: Sergey Kanzhelev
 simple_search: https://www.google.com/search
 description:
 
