@@ -3,7 +3,9 @@ layout: post
 title: "Collect ASP.NET MVC Web API traces with Application Insights"
 date: 2014-11-13 20:43:19 -0800
 comments: true
-categories: Application Insights, Demo
+categories: 
+- Application Insights
+- Demo
 ---
 Applicaiton Insights is designed to be a continuation of development expirience. As you use traces for development it is very easy to start collecting traces for your application in production. Today I'll walk thru steps to enable traces collection using Applicaiton Insights.
 
