@@ -14,11 +14,11 @@ I'm going to demo how to enable System.Diagnotsics [traces](http://msdn.microsof
 Traced from ASP.NET Web API
 ---------------------------
 Let's take a simple Web API applicaiton. I created one using File->New dialog in VS 2013. Following the steps in this [article](http://www.asp.net/web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api) we will enable tracing by installing package
-``` 
+```
 PM> Install-Package Microsoft.AspNet.WebApi.Tracing 
 ```
 and then modifying WebApiConfig.cs by adding call to extension method defined in that nuget package:
-```
+``` csharp
 config.EnableSystemDiagnosticsTracing();
 ```
 You may already have Applicaiton Insights enabled for your applicaiton. If not just follow [instructions](http://msdn.microsoft.com/library/dn793604.aspx). Now you are ready to enable traces collection from your applicaiton. Enabling tracing is very easy. Just install the nuget:
@@ -26,7 +26,7 @@ You may already have Applicaiton Insights enabled for your applicaiton. If not j
 PM> Install-Package Microsoft.ApplicationInsights.TraceListener -Pre 
 ```
 Under the hood nuget will add reference to new assembly containing trace listener and add this trace listener into web.config: 
-```
+``` xml
 <system.diagnostics>
 <trace autoflush="true" indentsize="0">
   <listeners>
@@ -63,7 +63,7 @@ Once installed Applicaiton Insights listen for default trace source. However you
 
 First, I moved Applicaiton Insights trace listener to sharedListeners section and added [System.Net trace source](http://msdn.microsoft.com/en-us/library/ty48b824.aspx). Here is how web.config looks like after my change:
 
-```
+``` xml
 <system.diagnostics>
 <trace autoflush="true" indentsize="0">
   <listeners>
@@ -87,7 +87,7 @@ First, I moved Applicaiton Insights trace listener to sharedListeners section an
 </system.diagnostics>
 ```
 Then I modified my applciaiton to make a simple call to bing:
-```
+``` csharp
 var request = (HttpWebRequest)WebRequest.Create(new Uri("http://bing.com"));
 using (var stream = new StreamReader(request.GetResponse().GetResponseStream()))
 {
