@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Programmatically set instrumenttion key"
+title: "Programmatically set instrumentation key"
 date: 2014-11-17 14:52:51 -0800
 comments: true
 categories: 
