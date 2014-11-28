@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Developer mode"
-date: 2014-11-25 21:50:47 -0800
+date: 2014-11-29 21:50:47 -0800
 comments: true
 published: false
 categories: 
