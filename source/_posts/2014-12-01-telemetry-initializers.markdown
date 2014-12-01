@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Telemetry Initializers"
-date: 2014-12-04 21:07:47 -0800
+date: 2014-12-01 21:07:47 -0800
 comments: true
-published: false
+published: true
 categories: 
 ---
 Application Insights .NET SDK has number of extensibility points. One of them called telemetry initializer. Telemetry initializer is a class implementing ITelemetryInitializer interface. The only method of this interface "Initialize" will be called whenever TraceFoo method was called for one of telemetry data items (Event, Metric, Request, Exception, etc.).
@@ -17,9 +17,11 @@ Default web applications SDK comes with two telemetry initializers - web operati
 ```
 These initializers are used to mark every data item with the current web request identity so traces and exception will be correlated with corresponding requests:
 
+{% img /images/2014-12-01-telemetry-initializers/trace-for-request.png 'trace for request' %}
+
 In this example trace telemetry have got the following context populated by telemetry initializers mentioned above: 
 ``` json
-"operation":{"id":"2856047922197883676","name":"GET Home/Index"}
+"operation":{"id":"1940098063557174680","name":"GET Home/Index"}
 ```
 It is easy to implement your own telemetry initializer. For example, you may want to mark every telemetry data item with [ETW ActivityID](http://msdn.microsoft.com/en-us/library/system.diagnostics.tracing.eventsource.currentthreadactivityid.aspx) or [System.Diagnostics ActivityID](http://msdn.microsoft.com/en-us/library/system.diagnostics.correlationmanager.activityid.aspx). First, you create a class that implements ITelemetryInitializer interface. In Initialize method you can fill out telemetry data item properties:
 ```
@@ -52,8 +54,12 @@ Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active.Teleme
 ```
 This is what every data item will be marked with after you'll start your application with the new telemetry initializer configured:
 ``` json
-"properties":{"ETW.ActivityID":"00000000-0000-0000-0000-000000000000","E2ETrace.ActivityID":"00000000-0000-0000-1e00-0080000000fb"}
+"properties":{"ETW.ActivityID":"00000000-0000-0000-0000-000000000000","E2ETrace.ActivityID":"00000000-0000-0000-0700-0080000000f9"}
 ```
+
+And here is how it looks like in UI:
+
+{% img /images/2014-12-01-telemetry-initializers/new-properties.png 'new properties' %}
 
 Telemetry initializers are powerful, but dangerous tool. They are called synchronously and block program execution flow. So if poorly written they can harm application performance.
 
@@ -74,7 +80,7 @@ namespace ApmTips.Tools
 
             using (StreamWriter sw = new StreamWriter(Environment.ExpandEnvironmentVariables("%tmp%\\ai-log.txt"), true))
             {
-                sw.Write(telemetry.GetType().Name + " was traced");
+                sw.WriteLine(telemetry.GetType().Name + " was traced");
                 sw.WriteLine(" from " + stack.ToString());
             }
         }
@@ -84,7 +90,8 @@ namespace ApmTips.Tools
 
 Here is an output this telemetry initializer generates for the single request with Trace statement in controller. You can see that method Trace.Write was called from home controller (WebApplication3.Controllers.HomeController.Index). This in turn called Application Insights trace listener which finally called Track method and our telemetry initializer:
 ```
-TraceTelemetry was traced from    at ApmTips.Tools.DiagnosticsTraceTelemetryInitializer.Initialize(ITelemetry telemetry)
+TraceTelemetry was traced from
+   at ApmTips.Tools.DiagnosticsTraceTelemetryInitializer.Initialize(ITelemetry telemetry)
    at Microsoft.ApplicationInsights.TelemetryClient.Track(ITelemetry telemetry)
    at Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener.Write(String message)
    at System.Diagnostics.TraceInternal.Write(String message)
@@ -144,7 +151,8 @@ TraceTelemetry was traced from    at ApmTips.Tools.DiagnosticsTraceTelemetryInit
    at System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)
    at System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)
 
-RequestTelemetry was traced from    at ApmTips.Tools.DiagnosticsTraceTelemetryInitializer.Initialize(ITelemetry telemetry)
+RequestTelemetry was traced from
+   at ApmTips.Tools.DiagnosticsTraceTelemetryInitializer.Initialize(ITelemetry telemetry)
    at Microsoft.ApplicationInsights.TelemetryClient.Track(ITelemetry telemetry)
    at Microsoft.ApplicationInsights.Extensibility.Web.RequestTracking.TelemetryModules.WebRequestTrackingTelemetryModule.OnEndRequest(RequestTelemetryContext state, HttpContext platformContext)
    at Microsoft.ApplicationInsights.Extensibility.Web.RequestTracking.WebPlatformModuleAdapter.ExecuteStepExceptionSafe[TX,TY](String stageName, Action`2 stage, TX state, TY platfromContext)
