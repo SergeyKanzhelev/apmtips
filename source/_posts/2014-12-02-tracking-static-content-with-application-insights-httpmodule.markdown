@@ -3,7 +3,7 @@ layout: post
 title: "tracking static content with Application Insights HttpModule"
 date: 2014-12-02 12:01:01 -0800
 comments: true
-published: false
+published: true
 categories: 
 - Application Insights
 ---
@@ -28,4 +28,5 @@ Since applicaiton insights is just a regular http module you can configure it ev
 ```
 Once configured you'll start seeing static content as requests collected on portal:
 {% img /images/2014-12-02-tracking-static-content-with-application-insights-httpmodule/static-content.png 'static content' %}
+
 Since this blog is statically generated using octopress and hosted as azure web site I plan to use this technique to monitor requests made to it. I'll post an update when will try it.
