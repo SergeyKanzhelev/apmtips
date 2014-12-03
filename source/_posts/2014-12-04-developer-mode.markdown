@@ -12,6 +12,12 @@ Application Insights is truly integrate into Visual Studio development expirienc
 
 From the time event happened 
 
+[12/1/2014 9:18 AM] Bret Grinslade: 
+I would says something like the service is in preview and there is not a published SLA but data usually shows up in a few seconds.
+[12/1/2014 9:18 AM] Bret Grinslade: 
+There will be formal SLAs when the services is generally available.
+
+
 Application SDK is using the following order of finding ApplicaitonInsights.config file:
 	* bin folder of application (from [Application Insigths Core](http://www.nuget.org/packages/Microsoft.ApplicationInsights/0.11.1-build00694) assembly it's Assembly.GetExecutingAssembly().CodeBase)
 	* current directory - side by side with web.config for ASP.NET applications (AppDomain.CurrentDomain.BaseDirectory)
