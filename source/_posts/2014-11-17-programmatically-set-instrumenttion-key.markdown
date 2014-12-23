@@ -30,9 +30,9 @@ In both cases - using config or setting key programmatically you'll see data rep
 
 There are situations when one default key is not enough. Scenarios I can imagine are:
 
-	* reporting data from payment processing library separately from other telemetry
-	* split telemetry information by tenants of your applicaiton and grant them access to their data only
-	* library developer wants to collect telemetry from his library, not send it to applicaiton that uses this library
+- reporting data from payment processing library separately from other telemetry
+- split telemetry information by tenants of your applicaiton and grant them access to their data only
+- library developer wants to collect telemetry from his library, not send it to applicaiton that uses this library
 
 For all this scenarios you'll need to configure your own custom telemetry client and set it's instrumentation key:
 ``` csharp
