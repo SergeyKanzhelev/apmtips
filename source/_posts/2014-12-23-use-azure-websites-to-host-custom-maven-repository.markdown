@@ -10,9 +10,23 @@ categories:
 I was trying to set up a temporary maven repository to share java libraries. It turns out you can easily do it for free using azure WebSites. Here are step-by-step instructions:
 
 * Create Azure WebSite. Name "m2" was already taken so I took dotm2 - here it is: [http://dotm2.azurewebsites.net/](http://dotm2.azurewebsites.net/).
-* Set deployment credentials. Open WebSite blade, click on settings tile. Now you can set deployment credentials. I set "FTP/deployment user name" to javamavenuser. 
-* Now you can access your web site content by FTP. You can find FTP host name under "Properties" on the same "Settings" blade. In my case it was ftp://waws-prod-dm1-003.ftp.azurewebsites.windows.net. Note, that actual user name you should use is "dotm2\javamavenuser" - it is specific to your website.
-* One last piece of website configuration is to enable directory browsing. Just create a web.config under "site/wwwroot" with this content:
+* Obtain ftp location and deployment credentials. I'd recommend to use site-specific credentials, not user ones. The difference is [explained here](https://github.com/projectkudu/kudu/wiki/Deployment-credentials). In ibiza portal you need to open web site blade and find "Get publish profile" button in blade's title. It is not visible by default so you'll need to click on "..." in the blade's title. I got file like this:
+``` xml
+<publishData>
+	<...>
+	<publishProfile 
+		profileName="dotm2 - FTP" 
+		publishMethod="FTP" 
+		publishUrl="ftp://waws-prod-dm1-003.ftp.azurewebsites.windows.net/site/wwwroot" 
+		ftpPassiveMode="True" 
+		userName="dotm2\$dotm2" 
+		userPWD="password goes here" 
+	</publishProfile>
+</publishData>
+```
+Now you can access web site content by FTP. 
+
+* Since I've already opened FTP window to try out deployment credentials - I'll make one last piece of website configuration. Enable directory browsing. Just create a web.config under "site/wwwroot" with this content:
  
 ``` xml
 <configuration>
@@ -48,7 +62,7 @@ uploadArchives {
             configuration = configurations.deployerJars
 
             repository(url: "ftp://waws-prod-dm1-003.ftp.azurewebsites.windows.net/site/wwwroot/repository/") { 
-                authentication(userName: "dotm2\\javamavenuser", password:javamavenuserpassword)
+                authentication(userName: "dotm2\\\$dotm2", password:javamavenuserpassword)
             }
          }
     }
@@ -59,7 +73,7 @@ Note, I've used variable "javamavenuserpassword" that you'll need to supply to g
 
 * Build and upload artifacts:
 ```
-gradlew uploadArchives -Pjavamavenuserpassword=<your password goes here>
+gradlew uploadArchives -Pjavamavenuserpassword=<password goes here>
 ```
 
 That's it. Now you can use artifacts from your repository like this:
