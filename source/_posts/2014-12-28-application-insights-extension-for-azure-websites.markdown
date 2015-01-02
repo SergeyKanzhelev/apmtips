@@ -21,11 +21,11 @@ Ok, imagine you have an application. For example it may be Orchard CMS blog from
 
 - Create Azure WebSite from gallery. Use Orchard CMS as a template
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/01-create-octopress-app.png "create octopress application" %}
+{% img /images/2014-12-28-application-insights-extension-for-azure-websites/01-create-orchard-app.png "create orchard1 application" %}
 
-- Configure Octopress. I've used Azure SQL server as Application Insights wouldn't monitor SQL CE
+- Configure Orchard. I've used Azure SQL server as Application Insights wouldn't monitor SQL CE
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/02-configure-octopress.png "configure octopress"  %}
+{% img /images/2014-12-28-application-insights-extension-for-azure-websites/02-configure-orchard.png "configure orchard"  %}
 
 - You can always connect to your web site using WebMatrix. Here magic starts. Download your web site locally
 
