@@ -40,7 +40,8 @@ Now you can access web site content by FTP.
 	</staticContent>
 </configuration>
 ```
-***update(1/3/2014):** At the moment of publication I forgot to configure mime types so pom files wasn't accessible and gradle wasn't able to resolve dependencies*
+
+***update(1/3/2015):** At the moment of publication I forgot to configure mime types so pom files wasn't accessible and gradle wasn't able to resolve dependencies*
 
 * Now FTP deployer can be used to upload jars to my repository. If you are using gradle [maven plugin](http://www.gradle.org/docs/current/userguide/maven_plugin.html) can be configured like shown below (build.gradle file):
 
