@@ -30,11 +30,17 @@ Now you can access web site content by FTP.
  
 ``` xml
 <configuration>
-   <system.webServer>
-      <directoryBrowse enabled="true" showFlags="Date,Time,Extension,Size" />
-   </system.webServer>
+	<system.webServer>
+		<directoryBrowse enabled="true" showFlags="Date,Time,Extension,Size" />
+	</system.webServer>
+	<staticContent>
+		<mimeMap fileExtension=".pom" mimeType="application/xml" />
+		<mimeMap fileExtension=".md5" mimeType="text/plain" />
+		<mimeMap fileExtension=".sha1" mimeType="text/plain" />
+	</staticContent>
 </configuration>
 ```
+***update(1/3/2014):** At the moment of publication I forgot to configure mime types so pom files wasn't accessible and gradle wasn't able to resolve dependencies*
 
 * Now FTP deployer can be used to upload jars to my repository. If you are using gradle [maven plugin](http://www.gradle.org/docs/current/userguide/maven_plugin.html) can be configured like shown below (build.gradle file):
 
