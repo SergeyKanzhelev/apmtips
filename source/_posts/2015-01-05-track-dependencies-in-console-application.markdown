@@ -6,12 +6,12 @@ comments: true
 categories: 
 - Application Insights
 ---
-Dependencies tracking in Application Insights is powerful feature that allows to see which SQL and Http calls your application makes. I've [mentioned](/blog/2014/12/28/application-insights-extension-for-azure-websites/) that you need Status Monitor or Azure WebSites extension to enable it for your web application. I don't like magic and tools that configures something that I don't quite understand. I think most of developers and especially devops thinks this way. Hopefully after this post you can better understand how this feature works and will trust it more.   
+Dependencies tracking in Application Insights is powerful feature that allows to see what SQL and Http calls your application makes. I've [mentioned](/blog/2014/12/28/application-insights-extension-for-azure-websites/) that you need to install Status Monitor or Azure WebSites extension to enable it for your web application. I don't like magic and tools that configures something that I don't quite understand. I think most of developers and especially devops thinks the same way. Hopefully after this post you can better understand how this feature works and will trust it more.   
 
-The main purpose of Status Monitor and Azure WebSites extension is to simplify Application Insights enablement for web applications. When you host your ASP.NET application in IIS or as Azure WebSite - it has predictable structure. So all enablement steps can be automated. In this post I'll show how to enable dependencies tracking feature for console application manually so you know what Status Monitor and Azure WebSites extensions do under the hood. You can apply similar steps for any other application type - be it Windows Service, Worker Role or anything else.  
+The main purpose of Status Monitor and Azure WebSites extension is to simplify Application Insights enablement for web applications. When you host your ASP.NET application in IIS or as Azure WebSite it has very predictable structure. So most of enablement steps can be automated. In this post I'll show how to enable dependencies tracking feature for console application manually so you know what Status Monitor and Azure WebSites extensions automation makes under the hood. You can apply similar steps for any other application type - be it Windows Service, Worker Role or anything else.  
 
 
-So let's assume you just created a simple console application called "TestDependency.exe" in Visual Studio. As it tests dependencies tracking - I make a simple http call in a Main method of this application:
+Let's assume you just created a simple console application called "TestDependency.exe" in Visual Studio. As it tests dependencies tracking - I make a simple http call in a Main method of this application:
 
 ``` 
 var request = HttpWebRequest.Create("http://bing.com");
@@ -23,7 +23,7 @@ using (var s = new StreamReader(response.GetResponseStream()))
 Console.ReadLine();
 ```
 
-Now you need to include and configure Application Insights in this application and then enable dependencies tracking feature. 
+Now you need to include and configure Application Insights for this application and then enable dependencies tracking feature. 
 
 
 Install Application Insights
@@ -35,7 +35,7 @@ Every big feature in Application Insights is implemented in a separate nuget so 
 Install-Package Microsoft.ApplicationInsights.RuntimeTelemetry -Pre
 ```
 
-Once installed - new telemetry module will appear in ApplicationInsights.config. This telemetry module is responsible for dependencies tracking. We call it remote dependencies module:
+Once installed new telemetry module will appear in ApplicationInsights.config. This telemetry module is responsible for dependencies tracking. We call it remote dependencies module:
 
 ``` 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.RemoteDependencyModule, Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry"/>
@@ -47,7 +47,7 @@ Lastly, as it is a console application, you need to set instrumentation key [man
 TelemetryConfiguration.Active.InstrumentationKey = "ec126cb1-9adc-4681-9cd4-0fcad33511c9";
 ```
 
-When you compile your application plenty of new files will appear in bin/Debug folder. You'll need to carry these files alongside with your application's binary when you'll deploying it:
+When you compile your application plenty of new files will appear in bin/Debug folder. You'll need to carry these files alongside with your application's binary when you'll deploying it. Here are the list of files you'll need for 0.12 version of Application Insights SDK.
 
 Application Insights configuration:
 
@@ -59,23 +59,16 @@ Application Insights Core and dependencies:
 
 ```
 Microsoft.ApplicationInsights.dll
-Microsoft.ApplicationInsights.xml
 Microsoft.Diagnostics.Tracing.EventSource.dll
-Microsoft.Diagnostics.Tracing.EventSource.xml
 Microsoft.Threading.Tasks.dll
 Microsoft.Threading.Tasks.Extensions.Desktop.dll
-Microsoft.Threading.Tasks.Extensions.Desktop.xml
 Microsoft.Threading.Tasks.Extensions.dll
-Microsoft.Threading.Tasks.Extensions.xml
-Microsoft.Threading.Tasks.xml
 ```
 
 Files responsible for dependencies tracking:
 
 ```
 Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.dll
-Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.pdb
-Microsoft.ApplicationInsights.Extensibility.RuntimeTelemetry.xml
 Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 Microsoft.ApplicationInsights.Extensions.Intercept_x86.dll
 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
@@ -113,7 +106,7 @@ SET MicrosoftInstrumentationEngine_Host="folder"\x86\Microsoft.ApplicationInsigh
 
 That's it. Just start console window, set environment variables and run your application. In my case [I see](/blog/2014/12/19/proxy-application-insights-events/) this dependency event being sent to Application Insights:
 
-``` json
+``` 
 "ver":1,
 "name":"Microsoft.ApplicationInsights.RemoteDependency",
 "time":"2015-01-05T05:03:46.4427348+00:00",
@@ -145,14 +138,16 @@ Web applications and dependencies tracking
 So what exactly Status Monitor and Azure WebSites extension are doing. 
 
 Status Monitor:
+
 1. Installs Runtime Instrumentation Agent binaries to %ProgramFiles%\Microsoft Application Insights\Runtime Instrumentation Agent
 2. Registers binaries as COM objects. COM registration ensures that CLR will pick dll of the correct bittness as IIS may run in either.
 3. Sets environment variables for IIS by setting registry keys HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\W3SVC\Environment and HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\WAS\Environment
 4. Suggest to restart IIS to apply those environment variables
 
 Azure WebSites extension:
+
 1. Unpack Runtime Instrumentation Agent binaries to extension folder
 2. Detects site bittness to set proper environment variables 
 3. Set environment variables for IIS by [modifying applicationhost.config](http://to_find_a_link)
 
-Note, in both cases environment variables are set globally for all applications. So Runtime Instrumentation Agent may work with different versions of Application Insight SDK even if they are loaded in a single process. Basically, the only purpose of it is to enable code injection by SDK. You can enable runtime instrumentation agent for any application and if this application is not using Application Insights - Runtime Instrumentation Agent will do nothing.   
+Note, in both cases environment variables are set globally for all applications. So Runtime Instrumentation Agent may work with different versions of Application Insight SDK even if they are loaded in a single process. Basically, the only purpose of it is to enable code injection by SDK. You can enable runtime instrumentation agent for any application and if this application is not using Application Insights - Runtime Instrumentation Agent will do nothing.
