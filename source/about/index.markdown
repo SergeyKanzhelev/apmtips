@@ -44,6 +44,5 @@ This is how I configured deployment to azure as azure web site:
 ```
 mkdir _azure
 cd _azure
-git init
-git remote add origin https://apmtips.scm.azurewebsites.net/apmtips.git 
+git clone https://apmtips.scm.azurewebsites.net/apmtips.git
 ```
