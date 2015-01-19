@@ -6,17 +6,18 @@ comments: true
 sharing: true
 footer: true
 ---
-This is my personal blog based on octopress engine.
+This is my personal blog. My main interest is application monitoring and [APM](http://en.wikipedia.org/wiki/Application_performance_management) space in general. I amd working in Microsoft on Application Insights and System Center Operations Manager (APM part).
 
 Contribute
 ----------
- You can find all the blog sources at [github](https://github.com/SergeyKanzhelev/apmtips). Feel free to send a pull request. I'll greatly appreciate styling and grammar fixes.
+You can find all the blog sources at [github](https://github.com/SergeyKanzhelev/apmtips). Feel free to send a pull request if you found some error or want to help to make posts better. 
 
 Setup
 -----
-These are notes on how to get, test and deploy this blog from sources. Apmtips is built on octopress engine and hosted as azure web site. I'm writing posts on my Surface 3 (windows 8.1) so steps may differ for your environment.
+You can easily setup octopress locally to test and deploy this blog from sources. Apmtips is built on octopress engine and hosted as azure web site. I'm writing posts on my Surface 3 (windows 8.1) so steps may differ for your environment.
 
 Clone blog from github:
+
 ```
 git clone https://github.com/SergeyKanzhelev/apmtips.git
 ```
@@ -44,5 +45,8 @@ This is how I configured deployment to azure as azure web site:
 ```
 mkdir _azure
 cd _azure
-git clone https://apmtips.scm.azurewebsites.net/apmtips.git
+git init
+git remote add origin https://apmtips.scm.azurewebsites.net/apmtips.git
+git pull origin master
+git push --set-upstream origin master
 ```
