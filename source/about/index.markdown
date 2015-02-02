@@ -28,6 +28,8 @@ You need these to be installed:
 2. Python. I have SET PATH=%PATH%;C:\tools\Python27
 3. "Which". I downloaded binaries from [gnuwin32](http://gnuwin32.sourceforge.net/packages/which.htm). SET PATH=%PATH%;c:\tools\which2.20\bin
 
+(In bash: PATH=$PATH:/c/tools/.yari/ruby-1.9.3-p448-i386-mingw32/bin:/C/tools/Python27/)
+
 Once these tools are installed you can generate site: 
 ```
 rake generate
