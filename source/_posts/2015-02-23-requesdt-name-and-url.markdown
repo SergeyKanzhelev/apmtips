@@ -19,5 +19,6 @@ Here is how request name calculation logic works today:
 Application Insights web SDK will send request name "as is" with regards to letter case. Grouping on UI will be case sensitive so "GET Home/Index" will be counted separately from "GET home/INDEX" even though in many cases they will result in the same controller and action execution. The reason for that is that urls in general are case sensitive (http://www.w3.org/TR/WD-html40-970708/htmlweb.html) and you may want to see if all 404 happened when customer were requesting the page in certain case.
 
 Known issues:
+
 1. There is no smart request name calculation for [attributes-based routing](http://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx) today
 2. Custom implementation of routing is not supported out of the box. You'll need to implement your own WebOperationNameTelemetryInitializer implementation to override standard behavior. 
