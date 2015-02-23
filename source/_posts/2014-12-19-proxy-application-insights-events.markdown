@@ -27,6 +27,14 @@ You may need to replace "localhost" to the name of machine running fiddler.
 	</InProcess>
 </TelemetryChannel>
 ```
+
+***Update***: *Please note, format of configuration file changed in 0.13 SDK. Now you should not specify "InPorcess" tag:*
+``` xml
+<TelemetryChannel>
+  <EndpointAddress>http://localhost:8888/v2/track</EndpointAddress>
+</TelemetryChannel>
+```
+
 Again, if you are using differnet machine you will need to replace localhost to the name of machine running your proxy server (or fiddler in my case).
 
 **Redirect JavaScript-generated traffic.** It is rare, but sometimes you may want to redirect JavaScript events. It is rare since JavaScript events may be easily viewed using browser tools and fiddler will always pick them up. However if you want to proxy JavaScript-generated telemetry data from all your customers this may be handy. All you need to do is to add endpointUrl property in Application Insights JavaScript code snippet:
