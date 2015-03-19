@@ -19,7 +19,7 @@ if (oSession.host.toLowerCase() == "localhost:8888") oSession.host = "dc.service
 ```
 You may need to replace "localhost" to the name of machine running fiddler.
 
-**Redirect application Insights SDK traffic to this proxy.** Here is a piece of XML you need to insert into ApplicationInsights.config file of your application. Note, this will work for application Insights SDK 0.12. It had different format for previous verisons and may change in future:
+**Redirect application Insights SDK traffic to this proxy.** Here is a piece of XML you need to insert into ApplicationInsights.config file of your application. Note, this will work for application Insights SDK 0.12. It had different format for previous versions and may change in future:
 ``` xml
 <TelemetryChannel>
 	<InProcess>
@@ -35,9 +35,9 @@ You may need to replace "localhost" to the name of machine running fiddler.
 </TelemetryChannel>
 ```
 
-Again, if you are using differnet machine you will need to replace localhost to the name of machine running your proxy server (or fiddler in my case).
+Again, if you are using different machine you will need to replace localhost to the name of machine running your proxy server (or fiddler in my case).
 
-**Redirect JavaScript-generated traffic.** It is rare, but sometimes you may want to redirect JavaScript events. It is rare since JavaScript events may be easily viewed using browser tools and fiddler will always pick them up. However if you want to proxy JavaScript-generated telemetry data from all your customers this may be handy. All you need to do is to add endpointUrl property in Application Insights JavaScript code snippet:
+**Redirect JavaScript-generated traffic.** It is rare, but sometimes you may want to redirect JavaScript events. It is rare since JavaScript events may be easily viewed using browser tools and fiddler will always pick them up. However if you want to proxy JavaScript-generated telemetry data from all your customers this may be handy. All you need to do is to add ```endpointUrl``` property in Application Insights JavaScript code snippet:
 ``` js
 {
     instrumentationKey: "e62632f1-81af-41d2-b8e8-9df22f10d9c3",
