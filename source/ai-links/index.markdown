@@ -24,4 +24,6 @@ Code
 Support
 -------
 1. File issues on GitHub [home repo or specific SDK version](https://github.com/microsoft/appinsights-Home)
-3. Microsoft connect portal available by short link [aka.ms/aibug](http://aka.ms/aibug)
+2. Microsoft connect portal available by short link [aka.ms/aibug](http://aka.ms/aibug)
+3. Visual Studio Online [service statis](https://www.visualstudio.com/support/support-overview-vs)
+4. Application Insights Service [Status Blog](http://blogs.msdn.com/b/applicationinsights-status/)
