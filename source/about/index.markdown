@@ -25,7 +25,7 @@ git clone https://github.com/SergeyKanzhelev/apmtips.git
 Since I use two git accounts I typically set my personal e-mail as ```user.email``` and override useHttpPath setting fro credential store so my personal github account will be used to push changed:
 
 ```
-git config user.email S.Kanzhelev@live.com
+git config user.email <email>
 git config credential.useHttpPath true
 ```
 
