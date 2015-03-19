@@ -6,6 +6,8 @@ comments: true
 categories:
 - Application Insights 
 ---
+Big thanks to [Scott Southwood](https://github.com/scsouthw) who helped to prepare this post.
+ 
 For end user monitoring Application Insights requires to add this JavaScript snippet to the page:
 
 ``` javascript
