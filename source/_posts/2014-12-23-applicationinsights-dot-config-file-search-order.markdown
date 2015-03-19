@@ -11,11 +11,11 @@ I've already mentioned how to programmatically [set instrumentation key](/blog/2
 
 When you add application insights to your .NET application - ApplicationInsights.config file being created and marked as a content. So it will be copied to output directory of your application. In general it will follow the same behavior as app.config file - copied side by side with executable for windows application and next to web.config for web application.
 
-So it will be logical to expect that Application Insights SDK will be searching this file next to app.config. However for certain scenarios this algorithm doesn't work and there is a gotcha here. Application Insights SDK is using the following order of searching ApplicaitonInsights.config file:
+So it will be logical to expect that Application Insights SDK will be searching this file next to app.config. However for certain scenarios this algorithm doesn't work and there is a gotcha here. Application Insights SDK is using the following order of searching ApplicationInsights.config file:
 
-1. bin folder of application - from [Application Insigths Core](http://www.nuget.org/packages/Microsoft.ApplicationInsights/0.12.0-build17386) assembly it's Assembly.GetExecutingAssembly().CodeBase
-2. base directory - side by side with web.config for ASP.NET applications (AppDomain.CurrentDomain.BaseDirectory)
+1. bin folder of application - from [Application Insigths Core](http://www.nuget.org/packages/Microsoft.ApplicationInsights/0.12.0-build17386) assembly it's ```Assembly.GetExecutingAssembly().CodeBase```
+2. base directory - side by side with web.config for ASP.NET applications (```AppDomain.CurrentDomain.BaseDirectory```)
 
-This behavior caused some problems already. There were cases when some random ApplicaitonInsights.config file was deployed to the bin folder of web application as well as correct one into content folder. So modifications of configuration file you'd expect to be used will not take an effect:
+This behavior caused some problems already. There were cases when some random ApplicationInsights.config file was deployed to the bin folder of web application as well as correct one into content folder. So modifications of configuration file you'd expect to be used will not take an effect:
 
 {% img /images/2014-12-23-applicationinsights-dot-config-file-search-order/ApplicationInsightsConfigSearchOrder.png 'ApplicationInsights.config search order' %}

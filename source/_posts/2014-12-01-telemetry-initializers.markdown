@@ -41,7 +41,7 @@ namespace ApmTips.Tools
     }
 }
 ```
-Then you need to register your telemetry initializer. You have two options - ApplicaitonInsights.config file:
+Then you need to register your telemetry initializer. You have two options - ApplicationInsights.config file:
 ``` xml
 <TelemetryInitializers>
   <Add Type="ApmTips.Tools.ExtendedIDTelemetryInitializer, ApmTips.Tools" />
