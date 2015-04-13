@@ -28,3 +28,5 @@ public class WorkaroundTelemetryInitializer : ITelemetryInitializer
     }
 }
 ``` 
+
+Again, this workaround will only be needed for the version 0.14 and will not work in the next version of SDK.  
