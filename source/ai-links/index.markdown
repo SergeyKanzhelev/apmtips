@@ -27,3 +27,9 @@ Support
 2. Microsoft connect portal available by short link [aka.ms/aibug](http://aka.ms/aibug)
 3. Visual Studio Online [service statis](https://www.visualstudio.com/support/support-overview-vs)
 4. Application Insights Service [Status Blog](http://blogs.msdn.com/b/applicationinsights-status/)
+
+Community
+---------
+1. ApplicationInsights.Helpers from [@robertmclaws](https://twitter.com/@robertmclaws) [ApplicationInsights.Helpers](https://github.com/AdvancedREI/ApplicationInsights.Helpers).
+2. Orchard CMS Application Insights [integration](http://orchardazureappinsights.codeplex.com/). 
+3. Status Monitor for Cloud Services by [@GreenfinchTech](https://twitter.com/GreenfinchTech) on [github](https://github.com/greenfinch/sample-net-AzureApplicationInsightsStatusMonitor/)
