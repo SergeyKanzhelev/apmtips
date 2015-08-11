@@ -36,9 +36,7 @@ private async void buttonClick_requestCurrentTemperature(object sender, RoutedEv
 }
 ```
 
-From usage perspective you might be curious what zip code being used most often. It is easy to track with Application Insights. First of all you need to install [Application Insights API NuGet](https://www.nuget.org/packages/Microsoft.ApplicationInsights/).
-
-Now you need to initialize Application Insights. Since I only have one form in my applicaiton, I've created a private telemetry client that will be used in my WPF form:
+From usage perspective you might be curious what zip code being used most often. It is easy to track with Application Insights. You'll need to install [Application Insights API NuGet](https://www.nuget.org/packages/Microsoft.ApplicationInsights/). Than you initialize Application Insights. Since I only have one form in my applicaiton, I've created a private telemetry client that will be used in this WPF form:
 
 ``` csharp
 private readonly TelemetryClient telemetryClient;
@@ -60,7 +58,7 @@ telemetryClient.TrackEvent("TemperatureRequested",
 	new Dictionary<string, string>() { { "zip", zip } });
 ```
 
-In the portal you can open Metric Exporer and group events by zip code:
+In the [Azure portal](http://portal/azure.com) you can open Metric Exporer and group events by zip code:
 {% img /images/2015-08-08-application-insights-for-desktop-applications/events-by-zip-settings.png 'Settings to show events by zip code' %}
 
 Once configured you'll see a view like this that can be saved as favourite view for later access: 
@@ -98,7 +96,7 @@ private async void buttonClick_requestCurrentTemperature(object sender, RoutedEv
 }
 ```
 
-Finally, you want to know how many users of your application clicking this button. So you need to start tracking users and sessions. In my application I'm creating the new session every time user starts it. I also just use the user name from environment.
+Finally, you want to know how many users of your application clicking this button. So you need to start tracking users and sessions. In my application I'm creating the new session every time user opens the form. I'm using the user name from environment. You need to make sure that user names are unique enough so you'll get the real number of users. 
 
 ``` csharp
 public MainWindow()
@@ -113,9 +111,9 @@ public MainWindow()
 }
 ```
 
-You can find more information on usage tracking at our [documentation page](https://azure.microsoft.com/documentation/articles/app-insights-windows-usage/). 
+You can find more information on usage tracking on Application Insights [documentation page](https://azure.microsoft.com/documentation/articles/app-insights-windows-usage/). 
 
-***Note***, in this example I do not initialize singleton ```TelemetryConfiguration.Active``` and do not use ```ApplicationInsights.config``` configuration file. So in the documentation above you cannot just create ```TelemetryClient c = new TelemetryClient();```. This telemetry client will not be initialized - it will not have instrumentaiton key and telemetry channel initialized.  
+***Note***, in this example I do not initialize singleton ```TelemetryConfiguration.Active``` and do not use ```ApplicationInsights.config``` configuration file. So in the documentation above you cannot just create ```TelemetryClient c = new TelemetryClient();```. This telemetry client will not be initialized - it will not have instrumentaiton key and telemetry channel configured.  
 
 Most of the code above it not specific for desktop applications. One of the difference of desktop applications is that they may be running without internet connection. By default when you create ```TelemetryConfiguration``` in-memory channel will be used to communicate with the Application Insights backend. This channel has no persistence of events and will lose data if internet connection is not reliable. You may use this channel if it is not the issue for you. However for more reliable telemetry you may want to use persistence channel. For desktop applicaitons use [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel/) NuGet:
 
@@ -136,7 +134,7 @@ public MainWindow()
 }
 ```
 
-Persistence channel is optimized for devices scenario when the number of events produced by application is relatively small and connection is unreliable quite often. This channel will write events to the disk into reliable storage and then attempt to send it. Here is how it works.
+Persistence channel is optimized for devices scenario when the number of events produced by application is relatively small and connection is unreliable quite often. This channel will write events to the disk into reliable storage first and then attempt to send it. Here is how it works.
 
 Let's say you want to monitor unhandled exceptions. You'd subscribe on ```UnhandledException``` event and in the corresponding callback you want to make sure that telemetry will be persisted. So you call ```Flush``` on telemetry client.
 
@@ -157,7 +155,7 @@ private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionE
 }
 ```   
 
-The only thing method ```Flush``` will do is to make sure that telemetry event is stored in persistence storage. In my case when I enter incorrect zip code - applicaiton will crash with ```ArgumentExcetpion``` and I'll see new file named ```20150810005005_84fb4de977e24c8399618daf2c4eb57d.trn``` into the folder ```%LocalAppData%\Microsoft\ApplicationInsights\35eb39bd0bb5855e732748ad369ffacc10de7340```.
+The only thing method ```Flush``` will do is to make sure that all telemetry events from the buffer are stored in persistence storage. In my case when I enter incorrect zip code - applicaiton will crash with ```ArgumentExcetpion``` and I'll see new file named ```20150810005005_84fb4de977e24c8399618daf2c4eb57d.trn``` into the folder ```%LocalAppData%\Microsoft\ApplicationInsights\35eb39bd0bb5855e732748ad369ffacc10de7340```.
 
 This file has all events scheduled to be send to the backend compressed with GZIP.
 
@@ -173,4 +171,4 @@ Next time you'll start this application - channel will pick up this file and del
 
 All the implementation details of this telemetry configuration you may find on [github](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/master/src/TelemetryChannels/PersistenceChannel). 
 
-There are many more aspect of desktop applications monitoring. I didn't explain how you will track page views - one of the main concept of devices monitoring. You may also want to [track failures](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/), collect [diagnostics logs](https://azure.microsoft.com/documentation/articles/app-insights-diagnostic-search/) or even track dependencies or performance counters. Maybe next time I can cover these aspects as well.
+There are many more aspect of desktop applications monitoring. I didn't explain how you will track page views - one of the main concept of devices monitoring. You may also want to [track failures](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/), collect [diagnostics logs](https://azure.microsoft.com/documentation/articles/app-insights-diagnostic-search/) or track dependencies and performance counters. Maybe next time I can cover these aspects as well.
