@@ -7,17 +7,17 @@ categories:
 - Application Insights
 - Javascript 
 ---
-There is a feedback page for the Azure portal. One of the feedback item is "[I want to block certain items it sent to the app insights like the pagename. Can this be done?](http://feedback.azure.com/forums/223579-azure-preview-portal/suggestions/8480947-i-have-installed-the-browser-script-but-i-want-to)". One of my previous posts explains how Application Insights [javascript snippet](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/) works. Now I'll try to answer the question and discuss another scenario - how to disable reporting of telemetry under certain conditions. I hope this post will help to understand the snippet even better. 
+There is a feedback page for the Azure portal. One of the feedback item is "[I want to block certain items it sent to the app insights like the pagename. Can this be done?](http://feedback.azure.com/forums/223579-azure-preview-portal/suggestions/8480947-i-have-installed-the-browser-script-but-i-want-to)". One of my previous posts explains how Application Insights [javascript snippet](/blog/2015/03/18/javascript-snippet-explained/) works. Now I'll try to answer the question and discuss another scenario - how to disable reporting of telemetry under certain conditions. I hope this post will help to understand the snippet even better. 
 
-##Do not send PageView to the portal
-So - can pagename be hidden from the Application Insights. Yes, sure. The standard JavaScript snippet ends with these two lines:
+##Do not send page name to the portal
+So - can page name be hidden from the Application Insights. Yes, sure. The standard JavaScript snippet ends with these two lines:
 
 ``` javascript
 window.appInsights = appInsights;
 appInsights.trackPageView();
 ```
 
-So PageView event is not begin sent automatically. It is sent by this call to ```trackPageView``` you've pasted to your page. Looking at signature of this function you can find out that it accept four parameters, two of which are ```name``` and ```url```:
+So PageView event is not begin sent automatically. It is sent by this call to ```trackPageView``` you've pasted to your page. Looking at [signature](https://github.com/Microsoft/ApplicationInsights-JS/blob/8cfd9337fb085fac4e1aa7f3c743a2918b1f2786/JavaScript/JavaScriptSDK/appInsights.ts#L159) of this function you can find out that it accept four parameters, two of which are ```name``` and ```url```:
 
 ``` javascript
 public trackPageView(name?: string, url?: string, properties?: Object, measurements?: Object) 
