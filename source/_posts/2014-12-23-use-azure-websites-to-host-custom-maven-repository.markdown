@@ -32,12 +32,12 @@ Now you can access web site content by FTP.
 <configuration>
 	<system.webServer>
 		<directoryBrowse enabled="true" showFlags="Date,Time,Extension,Size" />
+		<staticContent>
+			<mimeMap fileExtension=".pom" mimeType="application/xml" />
+			<mimeMap fileExtension=".md5" mimeType="text/plain" />
+			<mimeMap fileExtension=".sha1" mimeType="text/plain" />
+		</staticContent>
 	</system.webServer>
-	<staticContent>
-		<mimeMap fileExtension=".pom" mimeType="application/xml" />
-		<mimeMap fileExtension=".md5" mimeType="text/plain" />
-		<mimeMap fileExtension=".sha1" mimeType="text/plain" />
-	</staticContent>
 </configuration>
 ```
 
