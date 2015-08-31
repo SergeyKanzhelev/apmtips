@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Web SDK 2.1.1 structure changes"
+title: "Web SDK 1.2.1 structure changes"
 date: 2015-08-29 00:00:00 -0700
 comments: true
 categories:
