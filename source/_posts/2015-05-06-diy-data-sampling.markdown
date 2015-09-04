@@ -7,6 +7,9 @@ categories:
 - Application Insights
 - DIY
 ---
+
+**[Updated 3-Sept-2015]: updated as channel was renamed**
+
 Now when pricing for Application Insights is [announced](http://azure.microsoft.com/en-us/pricing/details/application-insights/) you might be wondering - how can you make these prices truly cloud-friendly and only pay for what you are using. You may also wonder - how to fit into throttling limits even if you are willing to pay for all the telemetry data your application produces. *Note*, you wouldn't need any of this if your application doesn't have a big load. There are great filtering and grouping capabilities in Application Insights UI so you will be better off having all the data on the server.
 
 There are four techniques to minimize the amount of data your application reports - separate traffic, filter not interesting data, sample and aggregate. Today I'll explain how to implement sampling.
@@ -15,20 +18,20 @@ Sampling will only work for high-load applications. The idea is to send only eve
 
 There is no out-of-the-box support for sampling or filtering in Application Insights today. So the idea of implementing it will be to replace standard channel with the custom-made. For every telemetry item this channel may decide whether to send it to the portal or not.
 
-First, define a new class. You'll need to have your own instance of ```PersistenceChannel```. I've also defined public property ```SampleEvery``` so you can configure how much data to sample out using configuration file:  
+First, define a new class. You'll need to have your own instance of ```ServerTelemetryChannel``` from the NuGet package [Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/). I've also defined public property ```SampleEvery``` so you can configure how much data to sample out using configuration file:  
 
 ``` c#
-public class RequestsSamplingChannel : ITelemetryChannel, ISupportConfiguration
+public class RequestsSamplingChannel : ITelemetryChannel, ITelemetryModule
 {
     private int counter = 0;
 
-    private PersistenceChannel channel;
+    private ServerTelemetryChannel channel;
 
     public int SampleEvery { get; set; }
 
     public RequestsSamplingChannel()
     {
-        this.channel = new PersistenceChannel();
+        this.channel = new ServerTelemetryChannel();
     }
 
     public void Initialize(TelemetryConfiguration configuration)
