@@ -154,4 +154,6 @@ Looking at nuspec you can see that ```Microsoft.Bcl.Async``` is a dependency for
 
 So it seems that NuGet do not distinguish dependencies for the different plaforms while building the list of references. So I filed the issue at [GitHub](https://github.com/NuGet/Home/issues/1412) and hope it will be resolved soon.
 
+Workaround is simple if the list od dependencies for the platform is small. Just add ```-DependencyVersion Ignore``` when calling ```Install-Package```. You'll need to install all dependencies manually.
+
 When everything is open source it is very easy to troubleshoot issues. So we open sourcing more code of Application Insights SDK. Now it is server telemetry channel. See this [PR](https://github.com/Microsoft/ApplicationInsights-dotnet/pull/41).  
