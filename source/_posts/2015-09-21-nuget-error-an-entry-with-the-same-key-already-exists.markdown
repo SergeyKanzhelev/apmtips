@@ -7,6 +7,10 @@ categories:
 - Application Insights
 - Troubleshooting
 ---
+**UPDATE**: Issue got resolved. It turns out that tha list of dependencies is merged by the server and there are some NuGet servers out wild which will merge dependencies for all platforms. Cleaning cache at ```%userprofile%\.nugget```  and  ```%localappdata%\nugget``` and not using those servers solves the problem. Hurrah Open source for resolving issues quickly!
+
+Original post:
+
 Sometimes installing the NuGet you can see the error message ```An entry with the same key already exists```:
   
 ```
