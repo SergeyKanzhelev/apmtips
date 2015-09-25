@@ -9,7 +9,12 @@ footer: true
 Documentation
 -------------
 1. Azure [documentation](http://azure.microsoft.com/en-us/services/application-insights/)
-2. MSDN blog uses tag [insights](http://blogs.msdn.com/b/visualstudioalm/archive/tags/insights/)
+2. Azure blog uses tag [Application Insights](https://azure.microsoft.com/en-us/blog/tag/application-insights/)
+3. MSDN blog uses tag [insights](http://blogs.msdn.com/b/visualstudioalm/archive/tags/insights/)
+4. Videos/Webinars at [azure documentation](http://azure.microsoft.com/documentation/videos/index/?services=application-insights)
+5. YouTube [Shorts](https://www.youtube.com/channel/UCbd7i2SMUgSEDVixqzk7RPQ)
+6. Ignite Breakout Sessions: [Diagnostics](https://channel9.msdn.com/Events/Ignite/2015/BRK3732) & [Usage](https://channel9.msdn.com/Events/Ignite/2015/BRK3720)
+
 
 Discussion forums
 -----------------
