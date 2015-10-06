@@ -25,13 +25,13 @@ Code
 ----
 1. GitHub application insights [home repo](https://github.com/microsoft/appinsights-Home)
 
-
 Support
 -------
 1. File issues on GitHub [home repo or specific SDK version](https://github.com/microsoft/appinsights-Home)
 2. Microsoft connect portal available by short link [aka.ms/aibug](http://aka.ms/aibug)
 3. Visual Studio Online [service statis](https://www.visualstudio.com/support/support-overview-vs)
 4. Application Insights Service [Status Blog](http://blogs.msdn.com/b/applicationinsights-status/)
+5. Request a feature at [user voice](http://aka.ms/aiuservoice)
 
 Community
 ---------
