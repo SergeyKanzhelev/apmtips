@@ -33,7 +33,7 @@ class Program
     {
         TelemetryConfiguration.Active.InstrumentationKey = "Foo";
 
-        var perfCounterCollectorModule = new PerformanceCollectorModule();
+        this.perfCounterCollectorModule = new PerformanceCollectorModule();
         perfCounterCollectorModule.Counters.Add(
 			new PerformanceCounterCollectionRequest(
 				@"\.NET CLR Memory(??APP_CLR_PROC??)\# GC Handles", "GC Handles"));
