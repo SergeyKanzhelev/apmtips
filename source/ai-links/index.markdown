@@ -38,3 +38,8 @@ Community
 1. ApplicationInsights.Helpers from [@robertmclaws](https://twitter.com/@robertmclaws) [ApplicationInsights.Helpers](https://github.com/AdvancedREI/ApplicationInsights.Helpers).
 2. Orchard CMS Application Insights [integration](http://orchardazureappinsights.codeplex.com/). 
 3. Status Monitor for Cloud Services by [@GreenfinchTech](https://twitter.com/GreenfinchTech) on [github](https://github.com/greenfinch/sample-net-AzureApplicationInsightsStatusMonitor/)
+
+Operations Manager links
+------------------------
+1. Operations Manager and [AVIcode](https://social.technet.microsoft.com/Forums/en-US/home?forum=operationsmanageravicode)
+2. SCOM [APM](https://social.technet.microsoft.com/Forums/en-US/home?forum=scomapm)
