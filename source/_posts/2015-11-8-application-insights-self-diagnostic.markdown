@@ -6,6 +6,8 @@ comments: true
 categories:
 - Application Insights
 ---
+*This blog post was written by Anastasia Baranchenkova*
+
 Each application insights component writes diagnostic information using [EventSource](http://blogs.msdn.com/b/vancem/archive/2012/07/09/logging-your-own-etw-events-in-c-system-diagnostics-tracing-eventsource.aspx).
 
 If you see no data and you already checked that correct instrumentation key is specified you can try to use PerfView to see if there are problems with sending telemetry out (More about collecting Application Insights traces [here](http://sergeysharp.com/blog/2015/04/16/diagnostic-of-applicationinsights-sdk/).
