@@ -13,7 +13,7 @@ I was trying to set up a temporary maven repository to share java libraries. It 
 * Obtain ftp location and deployment credentials. I'd recommend to use site-specific credentials, not user ones. The difference is [explained here](https://github.com/projectkudu/kudu/wiki/Deployment-credentials). In ibiza portal you need to open web site blade and find "Get publish profile" button in blade's title. It is not visible by default so you'll need to click on "..." in the blade's title. I got file like this:
 ``` xml
 <publishData>
-	<...>
+	<morePublishingOptions>
 	<publishProfile 
 		profileName="dotm2 - FTP" 
 		publishMethod="FTP" 
@@ -32,12 +32,12 @@ Now you can access web site content by FTP.
 <configuration>
 	<system.webServer>
 		<directoryBrowse enabled="true" showFlags="Date,Time,Extension,Size" />
+		<staticContent>
+			<mimeMap fileExtension=".pom" mimeType="application/xml" />
+			<mimeMap fileExtension=".md5" mimeType="text/plain" />
+			<mimeMap fileExtension=".sha1" mimeType="text/plain" />
+		</staticContent>
 	</system.webServer>
-	<staticContent>
-		<mimeMap fileExtension=".pom" mimeType="application/xml" />
-		<mimeMap fileExtension=".md5" mimeType="text/plain" />
-		<mimeMap fileExtension=".sha1" mimeType="text/plain" />
-	</staticContent>
 </configuration>
 ```
 
