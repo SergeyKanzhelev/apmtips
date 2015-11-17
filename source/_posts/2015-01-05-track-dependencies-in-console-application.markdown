@@ -6,6 +6,9 @@ comments: true
 categories: 
 - Application Insights
 ---
+
+***Update (11/17/2015):*** *package RuntimeTelemetry was renamed to Microsoft.ApplicationInsights.DependencyCollector and some class names and namespaces were changed correspondingly.* 
+
 Dependencies tracking in Application Insights is powerful feature that allows to see what SQL and Http calls your application makes. I've [mentioned](/blog/2014/12/28/application-insights-extension-for-azure-websites/) that you need to install Status Monitor or Azure WebSites extension to enable it for your web application. I don't like magic and tools that configures something that I don't quite understand. I think most of developers and especially devops thinks the same way. Hopefully after this post you can better understand how this feature works and will trust it more.   
 
 The main purpose of Status Monitor and Azure WebSites extension is to simplify Application Insights enablement for web applications. When you host your ASP.NET application in IIS or as Azure WebSite it has very predictable structure. So most of enablement steps can be automated. In this post I'll show how to enable dependencies tracking feature for console application manually so you know what Status Monitor and Azure WebSites extensions automation makes under the hood. You can apply similar steps for any other application type - be it Windows Service, Worker Role or anything else.  
