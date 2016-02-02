@@ -8,8 +8,6 @@ categories:
 ---
 *This blog post was written by Anastasia Baranchenkova*
 
-# Telemetry channels update #
-
 From the time Sergey wrote his [blog post](http://apmtips.com/blog/2015/09/03/more-telemetry-channels/) there are a few changes.
 
 Persistence channel was removed. There will be no new versions of Application Insights SDK for devices. The suggested solution is to use [HockeyApp](http://hockeyapp.net/features/) that Microsoft acquired last year.
@@ -23,7 +21,7 @@ In the [first case](http://stackoverflow.com/questions/34106876/application-insi
 
 Second one was more interesting. There was an application that worked perfectly fine locally but when deployed to a VM it crashed. It appeared that local app data was pointing to an unmapped drive. Unfortunately ApplicationInsights was not catching this type of exception, so it was just crashing without even trying to check temp folder. This bug was fixed in 2.0.0-beta4. 
 
-Additionally fixing this issue we added an ability to specify custom folder either though configuration or in code (if it is not provided or inaccessible old logic is used).
+Additionally while fixing this issue we added an ability to specify custom folder either though configuration or in code (if it is not provided or inaccessible old logic is used).
 
 In configuration file you would do it this way (make sure you have correct xml closing tags):
 
@@ -46,13 +44,4 @@ channel.Initialize(TelemetryConfiguration.Active);
 TelemetryConfiguration.Active.TelemetryChannel = channel;
 ```
 
-An interesting side note: configuration loading is very flexible. If you see a public property on the object that can be defined in the configuration file (e.g. TelemetryInitializer, TelemetryProcessor or Channel) this property can be set via configuration file. We did not have to change configuration loading logic for this update, we just added a public property to the ServerTelemetryChannel.
-
-
-
-
-
-
-
-
-
+An interesting side note: configuration loading is very flexible. If you see a public property on an object that can be defined in the configuration file (e.g. TelemetryInitializer, TelemetryProcessor or Channel) this property can be set via configuration file. We did not have to change configuration loading logic for this update, we just added a public property to the ServerTelemetryChannel.
