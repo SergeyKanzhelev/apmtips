@@ -43,3 +43,15 @@ client.TrackEvent("purchase completed");
 
 [This](https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/master/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsExtensions.cs#L72) is how we solved it in ASP.NET core. We take configuration from Application Insights's singleton and use it as DI singleton. 
 
+Another [issue](http://apmtips.com/blog/2015/06/09/do-not-use-context-initializers/#comment-2740137715) with the dependency injection is that identity provider can only be obtained using DI. It is not that easy to create a `TelemetryInitializer` that will be instantiated on every request by DI. Application Insights has it's own mechanism of initializing and do not have a native mechanism to create a list of telemetry initializers per request.
+
+#Bugs
+There are some bugs I cannot explain today. There are reports that sometimes request name has a mystery \[id\] in it. For instance, request to this controller will be reported as *POST MyController \[id\]*: 
+
+``` csharp
+    public class MyController : ApiController
+    {
+        public async Task<HttpResponseMessage> Post(HttpRequestMessage request)
+```
+
+Looking at how [request name generated](https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/master/Src/Web/Web.Shared.Net/Implementation/RequestTrackingExtensions.cs#L75) I cannot explain it.
