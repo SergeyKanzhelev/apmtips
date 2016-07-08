@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Application Insights for MVC and MVC Web API"
+title: "Application Insights for MVC and Web API"
 date: 2016-06-21 22:59:20 -0700
 comments: true
 categories: 
 ---
-Application Insights Web SDK today has a very basic support for MVC and MVC Web API applications. In this post I collected some links on how to make monitoring of your applications better. This is not a definitive guide on how to monitor those types of applications correctly. This is just a dump of accumulated knowledge of some problems and their solutions.
+Application Insights Web SDK today has a very basic support for MVC and Web API applications. In this post I collected some links on how to make monitoring of your applications better. This is not a definitive guide on how to monitor those types of applications correctly. This is just a dump of accumulated knowledge of some problems and their solutions.
 
 ##Telemetry correlation
 This is how NuGet server implemented [OWIN middleware](https://github.com/NuGet/NuGet.Services.Metadata/pull/68/files) to track telemetry. It uses custom CallContext and time tracking. 
