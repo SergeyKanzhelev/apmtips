@@ -1,4 +1,4 @@
-C:\src\mseng\yari\rubyinstaller.ps1 2.0.0
+C:\src\github\yari\rubyinstaller.ps1 2.3.3
 $env:path = $env:path + ";C:\Python27"
 $env:path = $env:path + ";C:\tools\which2.20\bin"
 cd C:\src\github\apmtips
