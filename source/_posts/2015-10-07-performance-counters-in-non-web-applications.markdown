@@ -22,7 +22,7 @@ Install-Package Microsoft.ApplicationInsights.PerfCounterCollector
 NuGet will create an ```ApplicationInsights.config``` file. If you don't use it (and you probably don't use it for desktop applications) - remove this file.
 
 ##Step 3
-Define global variable that will live for a lifetime of an applicaiton, instantiate it, populate the list of counters and call ```Initialize``` method:
+Define global variable that will live for a lifetime of an application, instantiate it, populate the list of counters and call ```Initialize``` method:
 
 ``` csharp
 class Program
