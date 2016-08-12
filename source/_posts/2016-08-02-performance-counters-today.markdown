@@ -43,6 +43,7 @@ https://github.com/SignalR/SignalR/blob/799d9bc32524066344cb3656e5f28f2fd03ba9b3
 
 https://msdn.microsoft.com/en-us/library/ms804008.aspx
 
+```
 performanceCounters/processorPercentage
 performanceCounters/availableMemory
 
@@ -55,7 +56,7 @@ performanceCounters/exceptionRate
 performanceCounters/requestExecutionTime
 performanceCounters/requestRate
 performanceCounters/requestQueueDepth
-
+```
 
 
 ``` xml
