@@ -4,6 +4,7 @@ title: "Performance Counters Today"
 date: 2016-08-02 21:56:12 -0700
 comments: true
 categories: 
+published: false
 ---
 
 How do you use performance counters today? 
@@ -75,3 +76,5 @@ performanceCounters/requestQueueDepth
     <Add PerformanceCounter="\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue" />
 </Counters>
 ```
+
+https://msdn.microsoft.com/en-us/library/ms972959.aspx
