@@ -15,22 +15,20 @@ public class ApplicationInsightsCorrelationHttpActionFilter : System.Web.Http.Fi
     public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
     {
         var template = actionContext.RequestContext.RouteData.Route.RouteTemplate;
-        var controller = actionContext.RequestContext.RouteData.Values["Controller"];
-
-        template = template.Replace("{controller}", controller.ToString());
 
         var request = System.Web.HttpContext.Current.GetRequestTelemetry();
-        request.Name = actionContext.RequestContext.RouteData.Route.RouteTemplate;
+        request.Name = template;
         request.Context.Operation.Name = request.Name;
 
         currentRequestTelemetry.Value = request;
-
 
         return base.OnActionExecutingAsync(actionContext, cancellationToken);
     }
 }
 ```
 
-This is an action filter for Web API. In the beggining of action execution the name can be taken from the route data. You can use an actual controller name by taking it from values and substituting it in the template.
+**Update**: More complete version of this filter is posted by [@snboisen](https://github.com/snboisen) at [github](https://gist.github.com/snboisen/df19e7abc9028d23b7a4babab15f85b8).
+
+This is an action filter for Web API. In the beggining of action execution the name can be taken from the route data. 
 
 Action filter wouldn't work when execution didn't reach the controller. So you may need to duplicate the logic in telemetry initializer `Initialize` method itself. However in this case you'd need to get the currently executing request and it may not always be available. 
