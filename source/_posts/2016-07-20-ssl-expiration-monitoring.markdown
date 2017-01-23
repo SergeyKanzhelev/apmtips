@@ -3,7 +3,8 @@ layout: post
 title: "SSL expiration monitoring"
 date: 2016-07-20 00:53:01 -0700
 comments: true
-categories: 
+categories:
+- Hacking availability tests  
 ---
 Now this blog is available via [https](https://apmtips.com). Thanks for the courtesy of *Let's Encrypt* and great step by step [instruction](https://gooroo.io/GoorooTHINK/Article/16420/Lets-Encrypt-Azure-Web-Apps-the-Free-and-Easy-Way/) how to install it on Azure Web App.
 

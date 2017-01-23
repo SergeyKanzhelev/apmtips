@@ -27,8 +27,6 @@ pageViews
 | summarize sum(itemCount)
 ```
 
-Note, I'm using `sum(itemCount)`. When sampling is turned on - every `pageView` telemetry item statistically represents `itemCount` of actual page views. Not something to worry about on my small blog.
-
 Note also that I'm using 5 minutes in the past to allow some time for data to arrive. Typical latency for the telemetry is under the minute. I'm being on a safe side here.
 
 In order to convert this query into a Pass/Fail statement I can do something like this:
@@ -61,6 +59,8 @@ https://api.applicationinsights.io/beta/apps/cbf775c7-b52e-4533-8673-bd6fbd7ab04
 ```
 
 Final step will be to set up a ping test that will query this Url and make a content match success criteria to search for the keyword `PASSED`.
+
+{% img /images/2017-01-17-alerting-over-analytics-queries/edit-webtest.png 'Edit webtest' %}
 
 You can change queries to satisfy other requests. You can query `customEvents` by `name` same way as I queried `pageViews` by `url`. You can set an alert when CPU is very high at least on one instance instead of standard averge across all instances:
 
