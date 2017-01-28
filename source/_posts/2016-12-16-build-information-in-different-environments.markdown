@@ -4,6 +4,7 @@ title: "Build information in different environments"
 date: 2016-12-16 10:08:23 -0800
 comments: true
 categories: 
+- Versioning
 ---
 I wrote [before](http://apmtips.com/blog/2015/06/18/application-versioning-semantic-or-automatic/) about automatic telemetry versioning you can implement for ASP.NET apps. With a single line change in the project file you can generate the `BuildInfo.config` file. This file contains the basic build information including build id.  
 

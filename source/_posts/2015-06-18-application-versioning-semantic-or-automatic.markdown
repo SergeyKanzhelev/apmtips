@@ -4,6 +4,7 @@ title: "Application Versioning: semantic or automatic?"
 date: 2015-06-18 09:36:35 -0700
 comments: true
 categories:
+- Versioning
 ---
 Looking at [@pksorensen](https://twitter.com/pksorensen)'s example of OWIN middleware to [monitor server request]( https://gist.github.com/s093294/d4b8abdaf4000b6c7f80) I noticed this [line](https://gist.github.com/s093294/d4b8abdaf4000b6c7f80#file-applicationinsightrequesttrackingmiddleware-cs-L27) of code:
 
