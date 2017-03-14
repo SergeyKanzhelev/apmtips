@@ -6,24 +6,24 @@ comments: true
 published: true
 categories: 
 ---
-Application Insights .NET SDK has number of extensibility points. One of them called telemetry initializer. Telemetry initializer is a class implementing ITelemetryInitializer interface. The only method of this interface "Initialize" will be called whenever TraceFoo method was called for one of telemetry data items (Event, Metric, Request, Exception, etc.).
+Application Insights .NET SDK has number of extensibility points. One of them is called telemetry initializer. Telemetry initializer is a class implementing ITelemetryInitializer interface. The only method of this interface "Initialize" is called whenever a TraceFoo method is called for one of telemetry data items (Event, Metric, Request, Exception, etc.).
 
-Default web applications SDK comes with two telemetry initializers - web operation name and Id initializers:
+The Application Insights web SDK comes with two default telemetry initializers - web operation name and Id initializers:
 ``` xml
 <TelemetryInitializers>
   <Add Type="Microsoft.ApplicationInsights.Extensibility.Web.TelemetryInitializers.WebOperationNameTelemetryInitializer, Microsoft.ApplicationInsights.Extensibility.Web" />
   <Add Type="Microsoft.ApplicationInsights.Extensibility.Web.TelemetryInitializers.WebOperationIdTelemetryInitializer, Microsoft.ApplicationInsights.Extensibility.Web" />
 </TelemetryInitializers>
 ```
-These initializers are used to mark every data item with the current web request identity so traces and exception will be correlated with corresponding requests:
+These initializers are used to mark every collected telemetry item with the current web request identity so that traces and exception can be correlated to corresponding requests:
 
 {% img /images/2014-12-01-telemetry-initializers/trace-for-request.png 'trace for request' %}
 
-In this example trace telemetry have got the following context populated by telemetry initializers mentioned above: 
+The trace telemetry in this example, has the following context populated by telemetry initializers mentioned above: 
 ``` json
 "operation":{"id":"1940098063557174680","name":"GET Home/Index"}
 ```
-It is easy to implement your own telemetry initializer. For example, you may want to mark every telemetry data item with [ETW ActivityID](http://msdn.microsoft.com/en-us/library/system.diagnostics.tracing.eventsource.currentthreadactivityid.aspx) or [System.Diagnostics ActivityID](http://msdn.microsoft.com/en-us/library/system.diagnostics.correlationmanager.activityid.aspx). First, you create a class that implements ITelemetryInitializer interface. In Initialize method you can fill out telemetry data item properties:
+It is easy to implement your own telemetry initializer. Say, you want to mark every telemetry data item with [ETW ActivityID](http://msdn.microsoft.com/en-us/library/system.diagnostics.tracing.eventsource.currentthreadactivityid.aspx) and [System.Diagnostics ActivityID](http://msdn.microsoft.com/en-us/library/system.diagnostics.correlationmanager.activityid.aspx). To do this, first, you create a class that implements the ITelemetryInitializer interface. In the interface's Initialize method you can fill out telemetry data item properties:
 ```
 namespace ApmTips.Tools
 {
@@ -41,7 +41,8 @@ namespace ApmTips.Tools
     }
 }
 ```
-Then you need to register your telemetry initializer. You have two options - ApplicationInsights.config file:
+You then need to register your telemetry initializer using one of the following two options:
+Adding it to ApplicationInsights.config file:
 ``` xml
 <TelemetryInitializers>
   <Add Type="ApmTips.Tools.ExtendedIDTelemetryInitializer, ApmTips.Tools" />
@@ -61,7 +62,7 @@ And here is how it looks like in UI:
 
 {% img /images/2014-12-01-telemetry-initializers/new-properties.png 'new properties' %}
 
-Telemetry initializers are powerful, but dangerous tool. They are called synchronously and block program execution flow. So if poorly written they can harm application performance.
+Telemetry initializers are a powerful, but dangerous tool. They are called synchronously and block program execution flow; if written poorly they can harm application performance.
 
 The following example demonstrates synchronous execution of telemetry initializers. It traces every telemetry initializer into the file with the stack trace where telemetry data item was created from:
 ```csharp
@@ -88,7 +89,7 @@ namespace ApmTips.Tools
 }
 ```
 
-Here is an output this telemetry initializer generates for the single request with Trace statement in controller. You can see that method Trace.Write was called from home controller (WebApplication3.Controllers.HomeController.Index). This in turn called Application Insights trace listener which finally called Track method and our telemetry initializer:
+Here is the output this telemetry initializer generates for a single request with Trace statement in controller. You can see that the Trace.Write method was called from the home controller (WebApplication3.Controllers.HomeController.Index). This in turn called the Application Insights trace listener which finally called Track method and our telemetry initializer:
 ```
 TraceTelemetry was traced from
    at ApmTips.Tools.DiagnosticsTraceTelemetryInitializer.Initialize(ITelemetry telemetry)
