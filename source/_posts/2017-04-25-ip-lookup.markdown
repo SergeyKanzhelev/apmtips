@@ -1,0 +1,88 @@
+---
+layout: post
+title: "ip lookup"
+date: 2017-04-25 10:36:24 -0700
+comments: true
+categories: 
+ - Application Insights
+---
+Application Insights makes automatic ip lookup for your telemetry. Geo information can be quite useful for monitoring, troubleshooting and usage scenarios.  
+
+I already [wrote](/blog/2016/07/05/client-ip-address) about IP address collection. Application Insights collects an IP address of the monitored service visitor. So you can group telemetry by the country of origin. This will allow to filter out long executing AJAX calls made from the countries with high latency or group usage metrics by "nighttime" visitors vs. "daytime" visitors.
+
+First, a word of caution. Application Insights is using the snapshot of MaxMind geo IP database ([Credits](https://docs.microsoft.com/azure/application-insights/app-insights-data-retention-privacy#credits)) from some time ago. So it may give wrong results at times and is not in sync with [the demo](https://www.maxmind.com/en/geoip-demo).
+
+For instance, this query demonstrates that not all availability tests [locations](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses#availability-tests) geo mapped correctly by Application Insights. 
+
+```
+availabilityResults 
+  | where timestamp > ago(10m) 
+  | join (requests 
+    | where timestamp > ago(10m)) on $left.id == $right.session_Id
+  | extend 
+    originatingLocation = location, 
+    recievedLocation = strcat(client_CountryOrRegion, " ", client_StateOrProvince, " ", client_City)
+  | summarize count() 
+    by originatingLocation, recievedLocation, client_IP 
+```
+
+This is a resultgin view. Note, some locations were not correctly mapped and some do not have city associated with it:
+
+
+| originatingLocation | recievedLocation                    | client_IP     |
+|---------------------|-------------------------------------|---------------|
+| US : CA-San Jose    | United States California San Jose   | 207.46.98.0   |
+| US : FL-Miami       | United States Florida Miami         | 65.54.78.0    |
+| US : TX-San Antonio | United States Texas San Antonio     | 65.55.82.0    |
+| NL : Amsterdam      | Netherlands North Holland Amsterdam | 213.199.178.0 |
+| US : IL-Chicago     | United States Illinois Chicago      | 207.46.14.0   |
+| IE : Dublin         | Ireland Leinster Dublin             | 157.55.14.0   |
+| JP : Kawaguchi      | Japan Tokyo Tokyo                   | 202.89.228.0  |
+| RU : Moscow         | United Kingdom                      | 94.245.82.0   |
+| CH : Zurich         | United Kingdom                      | 94.245.66.0   |
+| HK : Hong Kong      | Hong Kong Long Keng                 | 207.46.71.0   |
+| AU : Sydney         | United States Washington Redmond    | 70.37.147.0   |
+| BR : Sao Paulo      | Brazil Sao Paulo São Paulo          | 65.54.66.0    |
+| SE : Stockholm      | United Kingdom                      | 94.245.78.0   |
+| SG : Singapore      | United States Delaware Wilmington   | 52.187.30.0   |
+| US : VA-Ashburn     | United States                       | 13.106.106.0  |
+| FR : Paris          | United Kingdom                      | 94.245.72.0   |
+
+Try this [query](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA32QwWoCMRCG74W%2BwyAedmERfYDtxZMgKPoAErPTdUoy0cns2i0%2BfKMbSktLTxmY7%2F%2FyM6Y35MyRHOmww9g5jfD8BHCD6wkFQcljVOPP8AKmDcVi7ssMvAViKAQvXSLG1P%2B5EgLD1OGrzqiBuoapUHvSWcQYKfBh1YxifFfkJgtDYoiNErfrYNObHDW4PFaZErSEPTbfkKiS5sI6QtbDMnSsMmxkh%2B0jN4FJBXm5V6O4ka2Entjiz%2BUyXaYci8XOeyP0gWDvuqLMvx%2BHv2pWv1p9OVfblPwEr5kDPXsBAAA%3D&apptype=web) yourself for an up to date information.
+
+I authored a simple query to check whether my blog is read during the day or night. This demo is not produciton ready and I might have messed with the timezones. However for an adhoc analysis it was OK. It also demonstrates the use of the operators `datatable` and the power of `join`: 
+
+```
+let timezones = datatable (timezone_location:string, shift:time)
+    [
+        "United States", time(-6h),
+        "Canada", time(-6h),
+        "Japan", time(9h),
+        "Brazil", time(-3h),
+        "United Kingdom", time(0),
+        "Hong Kong", time(8h),
+        "Ireland", time(0),
+        "Switzerland", time(2h),
+        "Slovenia", time(1h),
+        "South Africa", time(2h),
+        "Sweden", time(1h),
+        "Poland", time(1h),
+        "Ukraine", time(2h),
+        "Netherlands", time(2h),
+    ];
+pageViews
+ | extend timezone_location = client_CountryOrRegion
+ | where timestamp > ago(10h) and timestamp < ago(5h)
+ | join kind= leftouter (
+     timezones
+ ) on timezone_location
+ | extend localtimehour = datepart("Hour", timestamp + shift)
+ | project name, timezone_location, timestamp, localtimehour, isDay = iff(localtimehour > 5 and localtimehour < 20, "day", "night")
+ | summarize count() by isDay
+ | render piechart
+```
+
+Here is the result view:
+
+{% img /images/2017-04-25-ip-lookup/day-night-piechart.png 'day vs night' %}
+
