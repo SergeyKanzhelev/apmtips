@@ -53,7 +53,7 @@ or programmatically:
 ``` csharp
 Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active.TelemetryInitializers.Add(new ExtendedIDTelemetryInitializer());
 ```
-This is what every data item will be marked with after you'll start your application with the new telemetry initializer configured:
+This is what every data item will be marked with after you start your application with the new telemetry initializer configured:
 ``` json
 "properties":{"ETW.ActivityID":"00000000-0000-0000-0000-000000000000","E2ETrace.ActivityID":"00000000-0000-0000-0700-0080000000f9"}
 ```
