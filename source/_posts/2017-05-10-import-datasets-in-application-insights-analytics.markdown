@@ -100,8 +100,6 @@ pageViews
 
 Refresh data in this table periodically as Application Insights keeps data only for [90 days](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-data-retention-privacy#how-long-is-the-data-kept). You can set up an Azure Function to run every 90 days.
 
-By the way, imported logs are also billed by size. You see it as a separate table in the bill blade:
+By the way, imported logs are also billed by size. You see it as a separate table in the bill blade. You can see how many times I run the application trying things =)...
 
 {% img /images/2017-05-10-import-datasets-in-application-insights-analytics/bill.png 'bill' %}
-
-You can see how many times I run the application trying things =)...
