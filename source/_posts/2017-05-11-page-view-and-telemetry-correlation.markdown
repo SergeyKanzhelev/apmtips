@@ -74,4 +74,4 @@ Also - make sure you are not making it to extreme. You may want to correlate the
 
 {% img /images/2017-05-11-page-view-and-telemetry-correlation/referrer.png 'referrer page' %}
 
-So all the pages user visited are correlated. Operation ID is playing the role of session id here. So I'd suggest for this kind of analysis employ some other mechanisms and not use telemetry correlation fields.
+As a result, all the pages user visited are correlated. Operation ID is playing the role of session id here. I'd suggest for this kind of analysis employ some other mechanisms and not use telemetry correlation fields.
