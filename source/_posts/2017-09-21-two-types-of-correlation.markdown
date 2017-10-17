@@ -5,16 +5,18 @@ date: 2017-09-21 10:56:32 -0700
 comments: true
 categories: 
 ---
-Application Map in Application Insights supports two types of correlation. One shows nodes in the map as instrumentation keys and another - as roles inside a single instrumentation key. In future those will be combined. In this post I'll explain why those wasn't combined from the beginning and how Application Map is built from telemetry events.
+Application Map in Application Insights supports two types of correlation. One shows nodes in the map as instrumentation keys and another - as roles inside a single instrumentation key. The plan is to combine them. In this post, I explain why there are two separate maps today and how Application Map is built from telemetry events.
 
-Application Insights data model defines incoming [requests](https://docs.microsoft.com/azure/application-insights/application-insights-data-model-request-telemetry) and outgoing [dependency calls](https://docs.microsoft.com/azure/application-insights/application-insights-data-model-dependency-telemetry). When SDK collects these events - it will populate request's `source` field and dependency's `target`. Now it's quite easy to draw an Application Map in a form of a star. Application is in the center of the star and every node describes the `source` of incoming request or `target` or outgoing. These two queries shows how to do it:
+## Single instrumentation key Application Map
+
+Application Insights data model defines incoming [requests](https://docs.microsoft.com/azure/application-insights/application-insights-data-model-request-telemetry) and outgoing [dependency calls](https://docs.microsoft.com/azure/application-insights/application-insights-data-model-dependency-telemetry). When SDK collects these events - it populates request's `source` field and dependency's `target`. Now it's easy to draw an Application Map in a form of a star. Application is in the center of the star and every node it connected to describes the `source` of incoming request or `target` or outgoing. These two queries show how to do it:
 
 ```
 dependencies | summarize sum(itemCount) by target
 requests | summarize sum(itemCount) by source
 ```
 
-When you have an Application Map in a form of a star - you may notice that some `http` dependency calls are actually the calls to another component of your application. If both components sends data to the same instrumentation key you can easily follow this call by joining dependency call of component `A` to the incoming request of component `B`. Also - typically those components will de deployed separately and would have a different `cloud_roleName` field. So by running this query you will get the list of all components talking to each other:
+When you have an Application Map is in a form of a star, you may notice that some `http` dependency calls are actually the calls to another component of your application. If both components send data to the same instrumentation key you can easily follow this call by joining telemetry. Dependency call of component `A` has an `id` matching the `parentId` of incoming request of component `B`. Typically those components will de deployed separately and would have a different `cloud_roleName` field. So by running this query you get the list of all components (defined as `cloud_roleName`) talking to each other:
 
 ```
 dependencies 
@@ -22,20 +24,20 @@ dependencies
   | summarize sum(itemCount) by from = cloud_RoleName1, to = cloud_RoleName
 ```
 
-Now you can see a map where every node is a separate `cloud_RoleName`. Note, that some of dependency calls are made to external components. To draw those you'd still need to use a target field from before. With the slight modification - you need to group it by `cloud_roleName`:
+This query joins outgoing from component `A` dependency call to the request incoming to the component `B`. Now you can see a map where every node is a separate `cloud_RoleName`. Note, that some of dependency calls are made to external components. To draw those you'd still need to use a target field from before. With the slight modification - you need to group it by `cloud_roleName`:
 
 ```
 dependencies | summarize sum(itemCount) by from = cloud_RoleName, to = target
 ```
 
-This example shows how to build an application map. First - define some constants:
+This example shows how to build an application map from code. First - define some constants:
 
 ``` csharp
 string SINGLE_INSTRUMENTATION_KEY = "3b162b68-47d7-4a8c-b031-c246206696e3";
 var TRACE_ID = Guid.NewGuid().ToString();
 ```
 
-First component - let's call it `Frontend` reports `RequestTelemetry` and related `DependencyTelemetry`. Note that both defines the `.Cloud.RoleName` context property to identify the component.
+First component - let's call it `Frontend` reports `RequestTelemetry` and related `DependencyTelemetry`. Both define the `.Cloud.RoleName` context property to identify the component.
 
 ``` csharp
 var r = new RequestTelemetry(
@@ -69,9 +71,9 @@ d.Context.Cloud.RoleName = "Frontend"; // this is the name of the node on app ma
 new TelemetryClient() { InstrumentationKey = SINGLE_INSTRUMENTATION_KEY }.TrackDependency(d);
 ```
 
-`Frontend` component need to pass global trace id `Context.Operation.Id` and dependency call id `d.Id` to the next component. Typically those will be send via http header.
+`Frontend` component needs to pass global trace ID `Context.Operation.Id` and dependency call ID `d.Id` to the next component. Typically those identities are sent via http header.
 
-Component called `API Service` tracks incoming request and instantiates context properties `.Context.Operation.ParentId` and `.Context.Operation.Id` from the incoming request headers. These context properties allows to join dependency call from `Frontend` to request in `API Service`.
+Component called `API Service` tracks incoming request and instantiates context properties `.Context.Operation.ParentId` and `.Context.Operation.Id` from the incoming request headers. These context properties allow to join dependency call from `Frontend` to request in `API Service`.
 
 In this example `API Service` in turn calls the external API.
 
@@ -111,22 +113,39 @@ Multi-role Application Map is in preview now. So in order to see it you'd need t
 
 {% img /images/2017-09-15-two-types-of-correlation/enable-role-based-map.png  'Enable Multi-Role Application Map' %}
 
-Result of the code execution will be something like this:
+Result of the code execution looks something like this picture:
 
 {% img /images/2017-09-15-two-types-of-correlation/role-based-app-map.png  'Multi-Role Application Map' %}
 
-You can see that every component of your application is represented as a separate node on Application Map. However an important limitation of this approach is that it only works when every component use the same instrumentation key to report telemetry. The main reason for this limitation is that Application Insights [does not support](https://feedback.azure.com/forums/357324-application-insights/suggestions/15165558-support-for-cross-ikey-cross-application-queries) cross applications joins.
+You can see that every component of your application is represented as a separate node on Application Map. However an important limitation of this approach is that it only works when every component uses the same instrumentation key. The main reason for this limitation is that Application Insights [did not support](https://feedback.azure.com/forums/357324-application-insights/suggestions/15165558-support-for-cross-ikey-cross-application-queries) cross applications joins for long time. 
 
-Now imagine you can join across instrumentation keys. Join-based approach may still fall apart. First, you never know in advance which instrumentation keys you need to join across. Second, for the very rare calls you may 
+Application Insights supports cross instrumentation key queries now, but joins across components are still expensive. Join-based approach may still fall apart. First, you never know in advance which instrumentation keys you need to join across. Second, rare calls may be easily sampled out when the load of telemetry is high. 
 
-First, let’s look at cross ikey. See Program.cs in attachment. I record request and dependency for DEVICES and request and twitter dependency for MAS-SHAKE. It should be easy to extend to include MAS-SHAKE-FUNC.
- 
- ``` csharp
+## Cross instrumentation key Application Map
+
+In order to solve problems of `join`-based Application Map, components need to exchange an identity information. So component `A` shares its identity when send request to component `B`. And component `B` replying with its identity.
+
+This approach is used for the cross instrumentation key application map. This diagram shows how:
+
+- Component A sends its Application Insights identity with request…
+- … and expect the target component B to send its identity back
+
+{% img /images/2017-09-15-two-types-of-correlation/app-id-propagation-diagram.png  'App ID propagation diagram' %}
+
+Knowing identity of the component allows to pre-aggregate metrics and make sure that even rare calls to a certain dependent component are not sampled out.
+
+This example shows how it works in code. First, define two separate instrumentation keys:
+
+``` csharp
 string FRONTEND_INSTRUMENTATION_KEY = "fe782703-16ea-46a8-933d-1769817c038a";
 string API_SERVICE_INSTRUMENTATION_KEY = "2a42641e-2019-423a-a2b5-ecab34d5477d";
+```
 
-// Obtaining APP ID for these instrumentation key.
-// We are using app id for correlation as propagating it via HTTP boundaries do not expose the instrumentation key, but still 
+Next step is to get the `app-id` for each instrumentation key. Exposing instrumentation key to dependant services is not a good practice as it can be used to spoof telemetry. `app-id` identifies component, but cannot be used to submit telemetry to Application Insights.
+
+``` csharp
+// Obtaining APP ID for these instrumentation keys.
+// We are using app ID for correlation as propagating it via HTTP boundaries do not expose the instrumentation key, but still 
 // uniquely identifies the Application Insights resource
 var task = new HttpClient().GetStringAsync($"https://dc.services.visualstudio.com/api/profiles/{FRONTEND_INSTRUMENTATION_KEY}/appId");
 task.Wait();
@@ -135,8 +154,11 @@ var FRONTEND_APP_ID = task.Result;
 task = new HttpClient().GetStringAsync($"https://dc.services.visualstudio.com/api/profiles/{API_SERVICE_INSTRUMENTATION_KEY}/appId");
 task.Wait();
 var API_SERVICE_APP_ID = task.Result;
+```
 
+Sending the Request and dependency calls from the first component. Note, that dependency now initializes `Target` field with additional information. `API Service` component returned its `app-id` in the http response so the `Frontend` component can associate it with the dependency telemetry.
 
+``` csharp
 var TRACE_ID = Guid.NewGuid().ToString();
 
 
@@ -172,7 +194,11 @@ d.Context.Operation.Id = TRACE_ID;
 
 
 new TelemetryClient() { InstrumentationKey = FRONTEND_INSTRUMENTATION_KEY }.TrackDependency(d);
+```
 
+Component `API Service` also reports request and dependency telemetry. Note, that request telemetry has an identity of `Frontend` in the `Source` field.
+
+``` csharp
 // The following headers got propagated with the http request
 //  Request-Id: |<r.Id>
 //  Request-Context: appId=cid-v1:{DEVICES_APP_ID}
@@ -210,18 +236,11 @@ d.Context.Operation.Id = TRACE_ID;
 new TelemetryClient() { InstrumentationKey = API_SERVICE_INSTRUMENTATION_KEY }.Track(d);
 ```
 
-In order to see actual JSON objects – use fiddler. I’m attaching attaching JSONs for your convenience.
+This picture shows how application map looks like:
 
 {% img /images/2017-09-15-two-types-of-correlation/multi-ikey-app-map.png  'Multi-ikey Application Map' %}
 
-Some complications you’ll notice in code:
-You need to pass thru the appID via HTTP headers alongside the trace ID and request ID. This allows Application Insights to understand which Application Insights ikeys are related to each other
-There is a separate type of dependency (“HTTP (tracked component)”) for Application Insights dependencies. This is a magic type that allowed to make UI faster.
 
+## Future directions
 
-In order to [turn on single Ikey correlation](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-app-map#end-to-end-system-app-maps) - open Preview blade for your app and toggle the switch for multi-role Application Map:
-
-
-
-
-
+There are many improvements coming in the Application Insights distributed applications monitoring story. Specifically for Application Map we are working on optimizing join queries and speed up the map rendering. Application Map is more reliable with metric pre-aggregations. There will be advanced filtering and grouping capabilities to slice and dice the map. 
