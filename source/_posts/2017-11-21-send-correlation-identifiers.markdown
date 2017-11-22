@@ -21,7 +21,7 @@ await context.Response.WriteAsync(
 
 # Basic correlation
 
-Http correlation protocol used by Application Insights is posted on [GitHub](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). The good thing about this protocol is that it's very flexible and will work with the most identity schemes you may have. If you want to correlate entire distributed transaction by the given identifier - the only thing you need to do is to send it as a `Request-ID` header.
+Http correlation protocol used by Application Insights is posted on [GitHub](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). The good thing about this protocol is that it's flexible and works with the most identity schemes you may have. If you want to correlate entire distributed transaction by the given identifier - the only thing you need to do is to send it as a `Request-ID` header.
 
 ``` bash
 curl -H "Request-ID:{78505740-5180-4809-968e-39284bde1a4e}" http://localhost:5000
@@ -32,11 +32,11 @@ RequestTelemetry:
     id=|{78505740-5180-4809-968e-39284bde1a4e}.989973aa_
 ```
 
-In the example above I shown that you can use a GUID as an identifier. For the real life implementation I'd suggest to format this GUID as a 16-bytes array in hex. Like `4bf92f3577b34da6a3ce929d0e0e4736`. It will be consistent with the future direction on correlation protocol.
+In the example above I formatted identifier as a GUID. For the real life implementation, I'd suggest formatting this GUID as a 16-bytes array in hex. Like `4bf92f3577b34da6a3ce929d0e0e4736`. It will be consistent with the future direction on correlation protocol.
 
 # Sequencing
 
-If one test sends multiple requests to one or many applications - you'd want to send a different id-s with every request. It's easy to do. Just append to the test execution identity any randolm seed and sequence number of the request. In the example below seed is `sd` and sequencing starts with `1`.
+If one test sends multiple requests to one or many applications - you'd want to send a different id-s with every request. It's easy to do. Just append to the test execution identity any random seed and sequence number of the request. In the example below seed is `sd` and sequencing starts with `1`.
 
 ``` bash
 curl -H "Request-ID:|{78505740-5180-4809-968e-39284bde1a4e}.sd_1" http://localhost:5000
@@ -60,14 +60,14 @@ RequestTelemetry:
 
 # Application identifier
 
-As I [mentioned before](http://apmtips.com/blog/2017/10/18/two-types-of-correlation/) for the better application map you'd need to propagate an app-id of the calling component. First, having instrumetation key you can get app-id:
+As I mentioned before for the better application map, you'd need to propagate an app-id of the calling component. First, having instrumentation key you can get app-id:
 
 ``` bash
 curl  https://dc.services.visualstudio.com/api/profiles/074608ec-29c0-41f1-a7c6-54f30d520629/appId
 cbf775c7-b52e-4533-8673-bd6fbd7ab04a
 ```
 
-Than you can send app-id as a `Request-Context` header:
+Then you can send app-id as a `Request-Context` header:
 
 ``` bash
 curl 
@@ -82,7 +82,7 @@ RequestTelemetry:
     source=cid-v1:cbf775c7-b52e-4533-8673-bd6fbd7ab04a
 ```
 
-This way you can identify two components to correlate telemetry. `RequestTelemetry`'s source field will point to the component that sent original request.
+This way you can identify two components to correlate telemetry. `RequestTelemetry`'s source field points to the component that sent original request.
 
 ## Summary
 
