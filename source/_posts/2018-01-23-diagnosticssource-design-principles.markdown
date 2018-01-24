@@ -15,7 +15,7 @@ There are many ways and purposes to observe an application. One can collect basi
 
 Agility of development that comes from customers demand and enabled by micro-services architecture makes the task of creating monitoring tools hard. Applications use different versions of client libraries to access dependant services. Every client library exposes information needed for monitoring in its own way. Monitoring tools use fragile and version-dependant code injection techniques to gather extra information when needed.
 
-Diagnostics Source in .NET was designed to improve observe-ability of libraries and platforms by monitoring tools.
+Diagnostics Source in .NET was designed to improve observe-ability of libraries and platforms by monitoring tools. It decouples pub from sub, and gives control over level of data collection while maintaining ambient context.
 
 # Design principles
 
@@ -30,9 +30,11 @@ There are two models to expose telemetry from client library. Let's call them **
 On the other hand, subscriber for the `DiagnosticsSource` callbacks may not catch up to the speed of client libraries development. So some information exposed by these libraries is designed to be available by agreement rather than by strong reference. More details you want to collect - more aware subscriber should be of client library specifics.
 
 
-## 2. Always exists - take it thin air
+## 2. Always exists - take it from thin air
 
 Another design principle is that the use of `DiagnosticsSource` should not require the change in client library API. In .NET world, it is NOT a common practice to pass context or telemetry objects into API explicitly. `DiagnosticsSource` exists as a global singleton and .NET makes it cheap to instantiate and start using it.
+
+It also provides an ambient context propagation. Maintaining of ambient context ensures that libraries do not need to know about each other to collaborate. You can always rely on "current" context. This feature is specific for .NET. Other languages like Go may implement framework-provided context class.
 
 
 ## 3. Single instrumentation for multiple purposes
@@ -49,5 +51,5 @@ The significant problem monitoring tools experience with libraries instrumentati
 
 # Other languages and platforms
 
-The analog of .NET `DiagnosticsSource` can be useful for other languages as well. For node.js, there is a [diagnostics channel](https://github.com/Microsoft/node-diagnostic-channel)
+The analog of .NET `DiagnosticsSource` can be useful for other languages as well. For node.js, there is a [diagnostics channel](https://github.com/Microsoft/node-diagnostic-channel). There is [discussion](https://github.com/nodejs/diagnostics/issues/134) to make diagnostics channel a standard or even part of node.js SDK. There are more opportunities for other languages and platforms. 
 
