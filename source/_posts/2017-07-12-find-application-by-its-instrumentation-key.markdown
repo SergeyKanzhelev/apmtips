@@ -16,12 +16,12 @@ Here is how you can find out the name of the application given its instrumentati
 ``` bash
 #!/bin/bash
 
+ikeyToFind=$1
 if [ -z "$ikeyToFind" ]; then
     echo "specify the instrumentaiton key"
     exit
 fi
 echo "search for instrumentation key $1"
-ikeyToFind=$1
 
 # this function search for the instrumentation key in a given subscription
 function findIKeyInSubscription {
