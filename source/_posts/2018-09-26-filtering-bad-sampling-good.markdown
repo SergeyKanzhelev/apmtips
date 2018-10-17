@@ -16,12 +16,12 @@ The idea of this post comes as a result of two conversations. First, on twitter 
 out](https://twitter.com/AlexSorokoletov/status/1044751743719034880) fast
 requests and dependency calls:
 
-![](../images/2018-09-26-filtering-bad-sampling-good/twitter.png)
+![](/images/2018-09-26-filtering-bad-sampling-good/twitter.png)
 
 Second one is a [design discussion](https://github.com/census-instrumentation/opencensus-specs/pull/182/)
 on sampling per endpoint url path for Open Census:
 
-![](../images/2018-09-26-filtering-bad-sampling-good/opencensus.png)
+![](/images/2018-09-26-filtering-bad-sampling-good/opencensus.png)
 
 I'll give example in C# as this post adds a scenario to the [msdn article](https://msdn.microsoft.com/en-us/magazine/mt808502.aspx). 
 The same techniques can be used on any other language supported by Application
