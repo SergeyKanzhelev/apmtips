@@ -9,7 +9,7 @@ Application Inisghts monitors web application requests. This article explains th
 
 There are many ways you use an application monitoring tool. You can use it for the daily status check, bugs triage or deep diagnostics. For the daily status check you want to know quickly whether anything unusual is going on. The commonly used chart is the number of failed requests. When this number is higher then yesterday - time comes for triage and deep diagnositcs. You want to know how exactly these requests failed.
 
-For the web applications Application Inisghts defines request as failed when the response code is less the `400` or equal to `401`. Quite straightforward. So why there are two fields being sent - `responseCode` and `success`. Wouldn't it be easier to map the response code to success status on backend? 
+For the web applications Application Inisghts defines request as sucessful when the response code is less the `400` or equal to `401`. And failed otherwise. Quite straightforward. So why there are two fields being sent - `responseCode` and `success`. Wouldn't it be easier to map the response code to success status on backend? 
 
 Response code `401` is marked as "successful" as it is part of a normal authentication handshake. Marking it as "failed" can cause an alert in the middle of a night when people on the different continent just came to work and login to the application. However this logic is oversimplified. You probably want to get notified when all these people who just came to work cannot login to the applicaiton because of some recent code change. Those `401` responses would be a legitimate "faiures".
 
