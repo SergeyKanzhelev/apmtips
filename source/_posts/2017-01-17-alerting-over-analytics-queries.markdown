@@ -8,6 +8,9 @@ categories:
 - Alerting
 - Hacking availability tests 
 ---
+**Update @ Feb 2019:** *I was asked to point to the fact, that this DYI project
+is not needed as this feature is supported [natively](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response) by Azure Monitor.*
+
 This is DYI post on how you can use Availability Tests and Data Access API together to enable most popular requests in Application Insights [uservoice](http://aka.ms/aiuservoice).
 
 Application Insights uservoce has these 4 very popular items. It is not hard to implement them yourself using Application Insights extensibility points. 
