@@ -3,7 +3,7 @@ layout: post
 title: "send correlation identifiers"
 date: 2017-11-21 21:25:05 -0800
 comments: true
-aliases: [/blog/2017-11-21-send-correlation-identifiers/]
+aliases: [/blog/2017/11/21/send-correlation-identifiers/]
 categories: 
 ---
 Small post on how to send correlation identifiers to the application monitored by Application Insights. It is a reflection on investigation what Application Insights Availability tests need to send to the application to natively correlate test execution identifier with the telemetry produced by that application.

@@ -3,7 +3,7 @@ layout: post
 title: "Use Network Information API with Application Insights"
 date: 2017-10-30 16:00:56 -0700
 comments: true
-aliases: [/blog/2017-10-30-use-network-information-api-with-application-insights/]
+aliases: [/blog/2017/10/30/use-network-information-api-with-application-insights/]
 categories: 
 - DIY
 ---
