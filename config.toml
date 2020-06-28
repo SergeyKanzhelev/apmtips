@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://hugo.apmtips.com/"
 languageCode = "en-us"
 title = "APM tips"
 theme = "soho"
