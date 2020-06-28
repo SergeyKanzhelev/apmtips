@@ -4,7 +4,6 @@ title: "Telemetry Initializers"
 date: 2014-12-01 21:07:47 -0800
 comments: true
 aliases: [/blog/2014/12/01/telemetry-initializers/]
-published: true
 categories: 
 ---
 Application Insights .NET SDK has number of extensibility points. One of them is called telemetry initializer. Telemetry initializer is a class implementing ITelemetryInitializer interface. The only method of this interface "Initialize" is called whenever a TraceFoo method is called for one of telemetry data items (Event, Metric, Request, Exception, etc.).

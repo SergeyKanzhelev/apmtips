@@ -150,7 +150,7 @@ about all slow outgoing calls. You may also discover that while browsing Azure
 portal in many cases you will see examples of slow incoming requests with both -
 slow and fast requests collected.
 
-![](../images/2018-09-26-filtering-bad-sampling-good/suggested-slow-request.png)
+![](/images/2018-09-26-filtering-bad-sampling-good/suggested-slow-request.png)
 
 The reason for this is that adaptive sampling is using probability sampling
 algorithm to decide on sampling decision. If sampling score is lower than 20% -
@@ -162,7 +162,7 @@ interesting to analyze. This is why you will get many useful samples
 with all the details. When you scroll down or randomly will open examples - you
 will see many of them with slow dependency only collected.
 
-![](../images/2018-09-26-filtering-bad-sampling-good/other-slow-request.png)
+![](/images/2018-09-26-filtering-bad-sampling-good/other-slow-request.png)
 
 In a given conditions all collected fast requests will have the details on all
 the fast dependency calls. Again, browsing those may be useful.
@@ -185,7 +185,7 @@ calls that used to take 10 ms will start taking 200 ms - this change will be
 visible on chart even on 5% of telemetry. And it will likely be caught by smart
 detectors of Application Insights.
 
-![](../images/2018-09-26-filtering-bad-sampling-good/count-gained-up.png)
+![](/images/2018-09-26-filtering-bad-sampling-good/count-gained-up.png)
 
 Latency problems caused by multiple calls to the fast dependent service will be
 caught - there probably be examples of those in the collected 5%.

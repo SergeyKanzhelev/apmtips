@@ -4,7 +4,6 @@ title: "tracking static content with Application Insights HttpModule"
 date: 2014-12-02 12:01:01 -0800
 comments: true
 aliases: [/blog/2014/12/02/tracking-static-content-with-application-insights-httpmodule/]
-published: true
 categories: 
 - Application Insights
 ---

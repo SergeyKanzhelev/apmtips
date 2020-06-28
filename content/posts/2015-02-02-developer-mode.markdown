@@ -3,7 +3,7 @@ layout: post
 title: "Developer Mode"
 date: 2015-02-02 08:54:58 -0800
 comments: true
-aliases: [/blog/2015-02-02-developer-mode/]
+aliases: [/blog/2015/02/02/developer-mode/]
 categories: 
 - Application Insights
 - troubleshooting

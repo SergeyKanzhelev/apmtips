@@ -3,7 +3,7 @@ layout: post
 title: "track dependencies in console application"
 date: 2015-01-05 20:28:50 +0200
 comments: true
-aliases: [/blog/2015-01-05-track-dependencies-in-console-application/]
+aliases: [/blog/2015/01/05/track-dependencies-in-console-application/]
 categories: 
 - Application Insights
 ---
