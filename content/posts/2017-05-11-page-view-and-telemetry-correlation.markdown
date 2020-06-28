@@ -3,7 +3,7 @@ layout: post
 title: "Page view and telemetry correlation"
 date: 2017-05-11 14:44:41 -0700
 comments: true
-aliases: [/blog/2017-05-11-page-view-and-telemetry-correlation/]
+aliases: [/blog/2017/05/11/page-view-and-telemetry-correlation/]
 categories: 
 ---
 For any monitoring and diagnostics solution, it is important to provide visibility into the transaction execution across multiple components. Application Insights [data model](https://docs.microsoft.com/en-us/azure/application-insights/application-insights-correlation) supports telemetry correlation. So you can express interconnections of every telemetry item. A significant subset of interconnections is collected by default by Application Insights SDK. Let's talk about page view correlations and its auto-collection.

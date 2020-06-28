@@ -3,7 +3,7 @@ layout: post
 title: "import datasets in Application Insights Analytics"
 date: 2017-05-10 22:47:26 -0700
 comments: true
-aliases: [/blog/2017-05-10-import-datasets-in-application-insights-analytics/]
+aliases: [/blog/2017/05/10/import-datasets-in-application-insights-analytics/]
 categories: 
 ---
 

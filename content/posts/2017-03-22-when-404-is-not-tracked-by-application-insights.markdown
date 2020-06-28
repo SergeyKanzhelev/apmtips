@@ -3,7 +3,7 @@ layout: post
 title: "When 404 is not tracked by Application Insights"
 date: 2017-03-22 14:47:01 -0700
 comments: true
-aliases: [/blog/2017-03-22-when-404-is-not-tracked-by-application-insights/]
+aliases: [/blog/2017/03/22/when-404-is-not-tracked-by-application-insights/]
 categories: 
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "Two types of correlation"
 date: 2017-10-18 10:56:32 -0700
 comments: true
-aliases: [/blog/2017-10-18-two-types-of-correlation/]
+aliases: [/blog/2017/10/18/two-types-of-correlation/]
 categories: 
 ---
 Application Map in Application Insights supports two types of correlation. One shows nodes in the map as instrumentation keys and another - as roles inside a single instrumentation key. The plan is to combine them. In this post, I explain why there are two separate maps today and how Application Map is built from telemetry events.

@@ -3,7 +3,7 @@ layout: post
 title: "Send metric to Application Insights"
 date: 2017-10-27 13:39:25 -0700
 comments: true
-aliases: [/blog/2017-10-27-send-metric-to-application-insights/]
+aliases: [/blog/2017/10/27/send-metric-to-application-insights/]
 categories: 
 - DIY
 ---

@@ -3,7 +3,7 @@ layout: post
 title: "Oneliner to send event to Application Insights"
 date: 2017-03-27 08:27:16 -0700
 comments: true
-aliases: [/blog/2017-03-27-oneliner-to-send-event-to-application-insights/]
+aliases: [/blog/2017/03/27/oneliner-to-send-event-to-application-insights/]
 categories: 
 ---
 Sometimes you need to send event to Application Insights from the command line and you cannot download the `ApplicationInsights.dll` and use powershell script like described [here](https://vnextengineer.azurewebsites.net/powershell-application-insights/). You may need it for your startup task or deployment script. It's a good thing Application Insights has an easy to use REST API. Here is a single line command line that runs powershell and pass the script as a parameter. I split it into multiple lines for readability, you will need to remove all newlines before running. Just replace an event name and add custom properties if needed:
