@@ -3,6 +3,7 @@ layout: post
 title: "Telemetry Initializers"
 date: 2014-12-01 21:07:47 -0800
 comments: true
+aliases: [/blog/2014/12/01/telemetry-initializers/]
 published: true
 categories: 
 ---

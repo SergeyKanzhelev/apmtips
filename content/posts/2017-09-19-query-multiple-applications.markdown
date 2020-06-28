@@ -3,6 +3,7 @@ layout: post
 title: "query multiple applications"
 date: 2017-09-19 15:13:42 -0700
 comments: true
+aliases: [/blog/2017-09-19-query-multiple-applications/]
 categories: 
 ---
 Sometimes you need to execute a query on all Application Insights resources. It can be useful when you are searching some data and not sure which application has it. Or you want to create a report on all your apps. This script shows all the sdk versions your applications are instrumented with. You can use it to make sure that SDKs are up to date.

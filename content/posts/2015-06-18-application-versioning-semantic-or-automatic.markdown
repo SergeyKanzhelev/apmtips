@@ -3,6 +3,7 @@ layout: post
 title: "Application Versioning: semantic or automatic?"
 date: 2015-06-18 09:36:35 -0700
 comments: true
+aliases: [/blog/2015-06-18-application-versioning-semantic-or-automatic/]
 categories:
 - Versioning
 ---

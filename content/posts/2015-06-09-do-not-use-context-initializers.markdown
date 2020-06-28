@@ -3,6 +3,7 @@ layout: post
 title: "Do not use Context Initializers"
 date: 2015-06-09 08:10:21 -0700
 comments: true
+aliases: [/blog/2015-06-09-do-not-use-context-initializers/]
 categories:
 - Application Insights
 ---

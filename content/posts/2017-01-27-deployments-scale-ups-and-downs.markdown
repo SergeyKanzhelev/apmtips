@@ -3,6 +3,7 @@ layout: post
 title: "Deployments, scale ups and downs"
 date: 2017-01-27 22:21:13 -0800
 comments: true
+aliases: [/blog/2017-01-27-deployments-scale-ups-and-downs/]
 categories: 
 - DYI
 - Analytics

@@ -3,6 +3,7 @@ layout: post
 title: "Update to the last post - set the name in MVC Web API"
 date: 2017-01-12 23:38:59 -0800
 comments: true
+aliases: [/blog/2017-01-12-update-to-the-last-post-set-the-name-in-mvc-web-api/]
 categories: 
 ---
 Answering the quesiton in this [comment](http://disq.us/url?impression=c2ac7ce8-d8f1-11e6-b91f-002590f382ca&thread=4930878937&forum=3303858&url=http%3A%2F%2Fapmtips.com%2Fblog%2F2016%2F06%2F21%2Fapplication-insights-for-mvc-and-mvc-web-api%2F%23comment-3096059076%3AlxPIOcDy_D8h8D2nytRz890EJdc&variant=active&experiment=digests&behavior=click&post=3096059076&type=notification.post.moderator&event=email) - how to set the name of the request for attribute-based MVC Web API routing. It can be done as an extension to the previous post. Something like this would work.

@@ -3,6 +3,7 @@ layout: post
 title: "Proxy Application Insights events"
 date: 2014-12-19 09:33:38 -0800
 comments: true
+aliases: [/blog/2014/12/19/proxy-application-insights-events/]
 categories: 
 - Application Insights 
 - troubleshooting

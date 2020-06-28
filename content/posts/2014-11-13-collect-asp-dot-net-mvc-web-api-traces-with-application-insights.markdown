@@ -3,6 +3,7 @@ layout: post
 title: "Collect ASP.NET MVC Web API traces with Application Insights"
 date: 2014-11-13 20:43:19 -0800
 comments: true
+aliases: [/blog/2014/11/13/collect-asp-dot-net-mvc-web-api-traces-with-application-insights/]
 categories: 
 - Application Insights
 - Demo

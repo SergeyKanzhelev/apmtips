@@ -3,6 +3,7 @@ layout: post
 title: "Collecting performance counters"
 date: 2015-02-02 08:18:47 -0800
 comments: true
+aliases: [/blog/2015-02-02-collecting-performance-counters/]
 published: false
 categories: 
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "DIY: data sampling"
 date: 2015-05-06 09:07:57 -0700
 comments: true
+aliases: [/blog/2015-05-06-diy-data-sampling/]
 categories:
 - Application Insights
 - DIY

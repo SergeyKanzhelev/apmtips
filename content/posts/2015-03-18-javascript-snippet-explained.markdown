@@ -3,6 +3,7 @@ layout: post
 title: "javascript snippet explained"
 date: 2015-03-18 10:44:11 -0700
 comments: true
+aliases: [/blog/2015-03-18-javascript-snippet-explained/]
 categories:
 - Application Insights 
 ---

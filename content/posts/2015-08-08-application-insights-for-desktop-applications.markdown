@@ -3,6 +3,7 @@ layout: post
 title: "Application Insights for desktop applications"
 date: 2015-08-08 09:21:47 -0700
 comments: true
+aliases: [/blog/2015-08-08-application-insights-for-desktop-applications/]
 categories:
 - Application Insights
 - Usage 

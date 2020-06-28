@@ -3,6 +3,7 @@ layout: post
 title: "ip lookup"
 date: 2017-04-25 10:36:24 -0700
 comments: true
+aliases: [/blog/2017-04-25-ip-lookup/]
 categories: 
  - Application Insights
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "Use Azure WebSites to host custom maven repository"
 date: 2014-12-23 09:37:28 -0800
 comments: true
+aliases: [/blog/2014/12/23/use-azure-websites-to-host-custom-maven-repository/]
 categories: 
 - Java
 - Azure WebSites

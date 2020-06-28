@@ -3,6 +3,7 @@ layout: post
 title: "powershell to process all IIS applications"
 date: 2015-08-20 07:45:49 -0700
 comments: true
+aliases: [/blog/2015-08-20-powershell-to-process-all-iis-applications/]
 published: false
 categories:
 - configuration

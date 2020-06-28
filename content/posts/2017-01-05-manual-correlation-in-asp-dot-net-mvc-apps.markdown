@@ -3,6 +3,7 @@ layout: post
 title: "manual correlation in ASP.NET MVC apps"
 date: 2017-01-05 14:49:35 -0800
 comments: true
+aliases: [/blog/2017-01-05-manual-correlation-in-asp-dot-net-mvc-apps/]
 categories: 
 ---
 I already wrote that correlation is not working well in ASP.NET MVC applications. Here is how you can fix it manually. 

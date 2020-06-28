@@ -3,6 +3,7 @@ layout: post
 title: "DiagnosticsSource design principles"
 date: 2018-01-23 09:44:46 -0800
 comments: true
+aliases: [/blog/2018/01/23/diagnosticssource-design-principles/]
 categories: 
 ---
 Diagnostics Source is a .NET package designed to allow reliable and fast instrumentation of client libraries and platforms. This instrumentation is used by monitoring and diagnostics tools. Diagnostics Source defines the data structure and practices that allow to collect the right level of details. Monitoring tools can fine tune data collection without update of client library code or using fragile code injection techniques.

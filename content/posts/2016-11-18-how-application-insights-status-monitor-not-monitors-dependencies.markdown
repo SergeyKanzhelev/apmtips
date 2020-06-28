@@ -3,6 +3,7 @@ layout: post
 title: "How Application Insights Status Monitor DOES NOT monitor dependencies"
 date: 2016-11-18 12:41:11 -0800
 comments: true
+aliases: [/blog/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/]
 categories: 
 ---
 In this article I'll address the common misperception that Status Monitor collects telemetry. I'll show how it helps to collect (but not collects itself) application dependencies information.   

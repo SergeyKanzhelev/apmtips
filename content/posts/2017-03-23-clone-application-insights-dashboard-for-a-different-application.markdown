@@ -3,6 +3,7 @@ layout: post
 title: "Clone Application Insights Dashboard for a different application"
 date: 2017-03-23 13:06:06 -0700
 comments: true
+aliases: [/blog/2017-03-23-clone-application-insights-dashboard-for-a-different-application/]
 categories: 
 ---
 You may have many environments where your application is running. For every environment you will create a separate Application Insights resource so you can set up access and billing for the production telemetry differnetly from the QA environment. However you may want to have the same dashboard for every environment. You may even want to deploy the dashboard updates alongside the application deployment. So when your application exposes new telemetry - dashboard will visualize it.

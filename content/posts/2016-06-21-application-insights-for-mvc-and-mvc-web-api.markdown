@@ -3,6 +3,7 @@ layout: post
 title: "Application Insights for MVC and Web API"
 date: 2016-06-21 22:59:20 -0700
 comments: true
+aliases: [/blog/2016-06-21-application-insights-for-mvc-and-mvc-web-api/]
 categories: 
 ---
 Application Insights Web SDK today has a very basic support for MVC and Web API applications. In this post I collected some links on how to make monitoring of your applications better. This is not a definitive guide on how to monitor those types of applications correctly. This is just a dump of accumulated knowledge of some problems and their solutions.

@@ -3,6 +3,7 @@ layout: post
 title: "Alerting over analytics queries"
 date: 2017-01-17 22:07:57 -0800
 comments: true
+aliases: [/blog/2017-01-17-alerting-over-analytics-queries/]
 categories:
 - DYI
 - Alerting

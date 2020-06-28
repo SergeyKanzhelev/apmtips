@@ -3,6 +3,7 @@ layout: post
 title: "Track issues with opening sql connections"
 date: 2016-07-18 23:54:22 -0700
 comments: true
+aliases: [/blog/2016-07-18-track-issues-with-opening-sql-connections/]
 published: false
 categories: 
 ---

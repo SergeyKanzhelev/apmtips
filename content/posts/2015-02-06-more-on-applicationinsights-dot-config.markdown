@@ -3,6 +3,7 @@ layout: post
 title: "More on ApplicationInsights.config"
 date: 2015-02-06 09:04:12 -0800
 comments: true
+aliases: [/blog/2015-02-06-more-on-applicationinsights-dot-config/]
 categories:
 - Application Insights 
 ---

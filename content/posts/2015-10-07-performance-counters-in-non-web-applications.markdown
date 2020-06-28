@@ -3,6 +3,7 @@ layout: post
 title: "Performance Counters in non-web applications"
 date: 2015-10-07 08:43:49 -0700
 comments: true
+aliases: [/blog/2015-10-07-performance-counters-in-non-web-applications/]
 categories: 
 ---
 This post shows how to collect Performance Counters for the desktop application and features the answer to the questions:

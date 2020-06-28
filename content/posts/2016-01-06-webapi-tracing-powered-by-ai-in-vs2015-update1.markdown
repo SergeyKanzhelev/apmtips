@@ -3,6 +3,7 @@ layout: post
 title: "WebApi tracing powered by ApplicationInsights in Visual Studio 2015 Update 1"
 date: 2016-01-06 00:00:00 -0700
 comments: true
+aliases: [/blog/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/]
 categories:
 - Application Insights
 - WebApi

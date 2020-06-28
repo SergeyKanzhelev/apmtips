@@ -3,6 +3,7 @@ layout: post
 title: "Nuget error: An entry with the same key already exists"
 date: 2015-09-21 21:23:40 -0700
 comments: true
+aliases: [/blog/2015-09-21-nuget-error-an-entry-with-the-same-key-already-exists/]
 categories: 
 - Application Insights
 - Troubleshooting

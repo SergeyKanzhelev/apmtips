@@ -3,6 +3,7 @@ layout: post
 title: "Web SDK 1.2.1 structure changes"
 date: 2015-08-29 00:00:00 -0700
 comments: true
+aliases: [/blog/2015-08-29-web-sdk-1-2-1-structure-changes/]
 categories:
 ---
 *This blog post was written by Anastasia Baranchenkova*

@@ -3,6 +3,7 @@ layout: post
 title: "New SDK version published"
 date: 2015-04-21 07:47:38 -0700
 comments: true
+aliases: [/blog/2015-04-21-new-sdk-version-published/]
 categories:
  - release notes
  - application insights

@@ -3,6 +3,7 @@ layout: post
 title: "JavaScript snippet and instrumentation key"
 date: 2014-11-28 10:19:49 -0800
 comments: true
+aliases: [/blog/2014/11/28/javascript-snippet-and-instrumentation-key/]
 categories: 
 - Application Insights
 ---

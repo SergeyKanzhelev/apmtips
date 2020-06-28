@@ -3,6 +3,7 @@ layout: post
 title: "ApplicationInsights.config file search order"
 date: 2014-12-23 08:10:17 -0800
 comments: true
+aliases: [/blog/2014/12/23/applicationinsights-dot-config-file-search-order/]
 categories: 
 - Application Insights
 - troubleshooting

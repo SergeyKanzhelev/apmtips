@@ -3,6 +3,7 @@ layout: post
 title: "Find application by it's instrumentation key"
 date: 2017-07-12 23:23:57 -0700
 comments: true
+aliases: [/blog/2017-07-12-find-application-by-its-instrumentation-key/]
 categories: DYI
 ---
 Meant to show how to use the new [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell). Unfortunately two scenarios I wanted to use it for are not that easy to implement. If you have time - go comment and upvote these two issues: [azure-cli#3457](https://github.com/Azure/azure-cli/issues/3457) and [azure-cli#3641](https://github.com/Azure/azure-cli/issues/3641).

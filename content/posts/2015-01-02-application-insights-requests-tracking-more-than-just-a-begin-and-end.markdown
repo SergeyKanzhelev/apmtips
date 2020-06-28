@@ -3,6 +3,7 @@ layout: post
 title: "Application Insights requests tracking - more than just a begin and end"
 date: 2015-01-02 21:27:42 -0800
 comments: true
+aliases: [/blog/2015/01/02/application-insights-requests-tracking-more-than-just-a-begin-and-end/]
 categories: 
 - Application Insights
 ---

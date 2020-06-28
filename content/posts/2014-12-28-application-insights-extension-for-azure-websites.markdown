@@ -3,6 +3,7 @@ layout: post
 title: "Application Insights extension for azure websites..."
 date: 2014-12-28 10:55:01 -0800
 comments: true
+aliases: [/blog/2014/12/28/application-insights-extension-for-azure-websites/]
 categories:
 - Application Insights
 - configuration 

@@ -3,6 +3,7 @@ layout: post
 title: "Filtering bad, sampling good"
 date: 2018-09-26 23:08:13 -0700
 comments: true
+aliases: [/blog/2018/09/26/filtering-bad-sampling-good/]
 categories: 
 - DIY
 - COGS

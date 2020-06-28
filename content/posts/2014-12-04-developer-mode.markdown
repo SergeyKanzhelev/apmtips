@@ -3,6 +3,7 @@ layout: post
 title: "Developer mode"
 date: 2014-12-04 21:39:47 -0800
 comments: true
+aliases: [/blog/2014/12/04/developer-mode/]
 published: false
 categories: 
 - Application Insights

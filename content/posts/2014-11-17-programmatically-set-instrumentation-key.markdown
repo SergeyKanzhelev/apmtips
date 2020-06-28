@@ -3,6 +3,7 @@ layout: post
 title: "Programmatically set instrumentation key"
 date: 2014-11-17 14:52:51 -0800
 comments: true
+aliases: [/blog/2014/11/17/programmatically-set-instrumentation-key/]
 categories: 
 - Application Insights
 ---

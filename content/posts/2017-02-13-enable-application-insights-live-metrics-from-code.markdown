@@ -3,6 +3,7 @@ layout: post
 title: "Enable Application Insights Live Metrics from code"
 date: 2017-02-13 21:33:48 -0800
 comments: true
+aliases: [/blog/2017-02-13-enable-application-insights-live-metrics-from-code/]
 categories: 
 ---
 Small tip on how to enable Application Insights Live Metrics from code. 

@@ -3,6 +3,7 @@ layout: post
 title: "Request name and url"
 date: 2015-02-23 09:08:55 -0800
 comments: true
+aliases: [/blog/2015-02-23-request-name-and-url/]
 categories:
 - Application Insights
 ---
