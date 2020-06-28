@@ -1,0 +1,43 @@
+steps:
+# checkout git submodules
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    git init
+    git remote add origin https://github.com/SergeyKanzhelev/apmtips.git
+    git fetch --depth=1 origin $COMMIT_SHA
+    git reset --hard FETCH_HEAD
+    git submodule update --init --recursive
+- name: gcr.io/cloud-builders/docker
+  args: [
+    'build',
+    '-t',
+    'gcr.io/$PROJECT_ID/apmtips:$BRANCH_NAME-$COMMIT_SHA',
+    '-t',
+    'gcr.io/$PROJECT_ID/apmtips:latest', 
+    '.']
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'k8s/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=main'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: [
+    'set', 
+    'image', 
+    'deployment', 
+    'apmtips', 
+    'apmtips=gcr.io/$PROJECT_ID/apmtips:$BRANCH_NAME-$COMMIT_SHA'
+  ]
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=main'
+
+images: [
+    'gcr.io/$PROJECT_ID/apmtips:$BRANCH_NAME-$COMMIT_SHA',
+    'gcr.io/$PROJECT_ID/apmtips:latest'
+   ]

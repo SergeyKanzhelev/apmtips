@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: apmips
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: apmtips-ip
+    networking.gke.io/managed-certificates: test-cert
+  labels:
+    app: apmtips
+spec:
+  backend:
+    serviceName: apmtips
+    servicePort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: apmtips
+  labels:
+    app: apmtips
+spec:
+  selector:
+    run: apmtips
+  ports:
+  - port: 80
+    targetPort: 80
+  type: NodePort
+---
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: test-cert
+spec:
+  domains:
+    - hugo.apmtips.com

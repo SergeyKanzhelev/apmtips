@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: apmtips
+  name: apmtips
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: apmtips
+  template:
+    metadata:
+      labels:
+        run: apmtips
+    spec:
+      containers:
+      - image: gcr.io/apmtips/apmtips:latest
+        name: apmtips
+        ports:
+        - containerPort: 80
