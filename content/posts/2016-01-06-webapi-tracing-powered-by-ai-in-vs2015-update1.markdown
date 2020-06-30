@@ -20,13 +20,13 @@ I created a sample application that I describe in details later on. In this appl
 Full sample is [here]( https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/WebApiTracingSample).
 
 So if you start debugging web hosted WebApi application even if you do not provide instrumentation key you can see all the traces rights in your Diagnostics Tools window. You can search there, filter and see actual json file that would have been sent if you provided a valid instrumentation key:
-{% img /images/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/DiagnosticToolsView_1.PNG 'Application Insights exception in the Diagnostics Tools hub' %}
+![Application Insights exception in the Diagnostics Tools hub](/images/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/DiagnosticToolsView_1.PNG)
 
-{% img /images/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/DiagnosticToolsView_2.PNG 'Application Insights trace in the Diagnostics Tools window' %}
+![Application Insights trace in the Diagnostics Tools window](/images/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/DiagnosticToolsView_2.PNG)
 
 For self-hosted WebApi applications you would need to configure ApplicationInsights providing a valid instrumentation key because Diagnostics Tools hub does not currently support this type of application. But you still can see all the telemetry from the VS itself. For that you need to open: **View ->Other Windows->Application Insights Search**. From there you connect to your Azure Subscription and get back all the telemetry. You can select different time intervals, filter by type or property values and see each telemetry item details:
 
-{% img /images/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/VSSearch.PNG 'Application Insights Search windows' %}
+![Application Insights Search windows](/images/2016-01-06-webapi-tracing-powered-by-ai-in-vs2015-update1/VSSearch.PNG)
 
 And now I want to describe in details how you can forward WebApi traces to ApplicationInsigts to get all this beauty. 
 

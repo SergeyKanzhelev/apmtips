@@ -64,7 +64,7 @@ First, Visual Studio didn't allow to pick `OPTIONS` http method. Only `GET` and 
 
 Second, there is no built-in response header value validator. So I configured the web test to run "bad" request if the value of extracted response header doesn't match the expected value.
 
-{% img /images/2017-01-31-fast-options-response-using-url-rewrite/multi-step-availability-test.png 'web test' %}
+![web test](/images/2017-01-31-fast-options-response-using-url-rewrite/multi-step-availability-test.png)
 
 After I configured my web test I can see the test results in standard UI or simply run a query like in Application Analytics.
 

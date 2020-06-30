@@ -19,17 +19,17 @@ disableCorrelationHeaders: boolean;
     
 You get page view correlated to ajax calls and corresponding server requests. Something like shown on the picture:
 
-{% img /images/2017-05-11-page-view-and-telemetry-correlation/correlated-today.png 'what is correlated today' %}
+![what is correlated today](/images/2017-05-11-page-view-and-telemetry-correlation/correlated-today.png)
 
 As you may see, correlation assumes that page view initiated the correlation. Which is not always true. I explain scenarios later in the post.
 
 Application Insights JavaScript SDK hijacks ajax calls and insert correlation headers to it. However, there is no easy way to correlate page views to other resources (scripts or images) without specialized browser extension or "hacky heuristics." You can use referrer value or setting short-living cookies. But neither gives you a generic and reliable solution.
 
-{% img /images/2017-05-11-page-view-and-telemetry-correlation/other-page-resources.png 'other page resources' %}
+![other page resources](/images/2017-05-11-page-view-and-telemetry-correlation/other-page-resources.png)
 
 SPA or single page application may introduce multiple page views correlated to each other. [React components](https://github.com/anastasiia-zolochevska/react-appinsights) may call/contain each other:
 
-{% img /images/2017-05-11-page-view-and-telemetry-correlation/spa-sub-pages.png 'SPA sub pages' %}
+![SPA sub pages](/images/2017-05-11-page-view-and-telemetry-correlation/spa-sub-pages.png)
 
 SPA is one of the reasons telemetry correlations is not enabled by default. SPA has only one page that initiates all communication to the server. Suddenly all application telemetry may become correlated to a single page view, which is not useful information.
 
@@ -37,7 +37,7 @@ BTW, ability to correlating page views is a primary reason for the github issue 
 
 You may also want to correlate page view with the originating server request:
 
-{% img /images/2017-05-11-page-view-and-telemetry-correlation/originating-server-request.png 'originating server request' %}
+![originating server request](/images/2017-05-11-page-view-and-telemetry-correlation/originating-server-request.png)
 
 It is easy to implement with the few lines of code. If you are using Application Insights Web SDK is 2.4-beta1 or higher, you can write something like this:
 
@@ -73,6 +73,6 @@ This approach, however, may cause some troubles for the cached pages. Page can b
 
 Also - make sure you are not making it to extreme. You may want to correlate the server request with the page view that initiated the request:
 
-{% img /images/2017-05-11-page-view-and-telemetry-correlation/referrer.png 'referrer page' %}
+![referrer page](/images/2017-05-11-page-view-and-telemetry-correlation/referrer.png)
 
 As a result, all the pages user visited are correlated. Operation ID is playing the role of session id here. I'd suggest for this kind of analysis employ some other mechanisms and not use telemetry correlation fields.

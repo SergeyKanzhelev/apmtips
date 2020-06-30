@@ -8,21 +8,22 @@ categories:
 ---
 This post shows how to collect Performance Counters for the desktop application and features the answer to the questions:
 
-{% blockquote %}
-There is no more ``TelemetryModules`` collection in ``TelemetryConfiguration`` class. where should I store my telemetry modules?
-{% endblockquote %}
+> There is no more ``TelemetryModules`` collection in ``TelemetryConfiguration`` class. where should I store my telemetry modules?
 
-##Step 1
+## Step 1
+
 Install [NuGet package](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/1.2.1).
 
 ```
 Install-Package Microsoft.ApplicationInsights.PerfCounterCollector
 ```
 
-##Step 2
+## Step 2
+
 NuGet will create an ```ApplicationInsights.config``` file. If you don't use it (and you probably don't use it for desktop applications) - remove this file.
 
-##Step 3
+## Step 3
+
 Define global variable that will live for a lifetime of an application, instantiate it, populate the list of counters and call ```Initialize``` method:
 
 ``` csharp
@@ -41,7 +42,8 @@ class Program
         perfCounterCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-##Step 4
+## Step 4
+
 In order to collect counters for the current process - you should use ```??APP_CLR_PROC??``` for CLR counters and ```??APP_WIN32_PROC??``` for windows counters. Typically counter instances will be named after process name. However in case of multiple instances of the process running you will have names like ```w3wp#3``` representing third instance of the ```w3wp.exe``` process.
 
 This indeces in instance names will change over time. For example, when process ```w3wp#2``` will finish, ```w3wp#3``` will become ```w3wp#2```. Moreover, instance name for CLR counters is different than for windows counter as CLR counters only count processes that runs .NET code inside.
@@ -49,7 +51,8 @@ This indeces in instance names will change over time. For example, when process 
 So ```PerfCounterCollector``` will regularly check the mapping between the instance name and process ID using counters: ```\.NET CLR Memory(*)\Process ID``` for managed counters and ```Process(*)\ID Process``` for windows counters is you are using keywords ```??APP_CLR_PROC??``` and ```??APP_WIN32_PROC??``` as instance names. 
  
  
-##Step 5
+## Step 5
+
 You are all set. Counter will be sent to the portal every minute.
 
 Custom counters will be sent as metrics:

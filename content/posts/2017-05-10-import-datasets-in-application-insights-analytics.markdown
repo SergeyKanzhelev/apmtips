@@ -11,7 +11,7 @@ I was thinking how to improve querying experience in Application Insights Analyt
 
 I downloaded the country codes from UN [website](https://unstats.un.org/unsd/methodology/m49/) and saved it as a blob in Azure. Then defined the Application Insights Analytics open schema by uploading this file as an example. I named columns and asked to use ingestion time as a required time column.
 
-{% img /images/2017-05-10-import-datasets-in-application-insights-analytics/define-schema.png 'define the schema' %}
+![define the schema](/images/2017-05-10-import-datasets-in-application-insights-analytics/define-schema.png)
 
 Then I used code example from the documentation for [data import feature](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import). Get the reference to the blob, created a security token and notified Application Insights about this blob storage.
 
@@ -97,10 +97,10 @@ pageViews
   | project name, ISOalpha3code  
 ```
 
-{% img /images/2017-05-10-import-datasets-in-application-insights-analytics/pageview-and-country.png 'pageview and countries' %}
+![pageview and countries](/images/2017-05-10-import-datasets-in-application-insights-analytics/pageview-and-country.png)
 
 Refresh data in this table periodically as Application Insights keeps data only for [90 days](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-data-retention-privacy#how-long-is-the-data-kept). You can set up an Azure Function to run every 90 days.
 
 By the way, imported logs are also billed by size. You see it as a separate table in the bill blade. You can see how many times I run the application trying things =)...
 
-{% img /images/2017-05-10-import-datasets-in-application-insights-analytics/bill.png 'bill' %}
+![bill](/images/2017-05-10-import-datasets-in-application-insights-analytics/bill.png)

@@ -41,11 +41,11 @@ You can use the same trick for Azure Web Apps. When you set continues integratio
 
 Once implemented I can see the deployment id as an application version in Glimpse:
 
-{% img /images/2016-12-16-build-information-in-different-environments/glimpse-version.png 'Glimpse version' %}
+![Glimpse version](/images/2016-12-16-build-information-in-different-environments/glimpse-version.png)
 
 You can also filter by it in azure portal:
 
-{% img /images/2016-12-16-build-information-in-different-environments/portal-version.png 'Portal version' %}
+![Portal version](/images/2016-12-16-build-information-in-different-environments/portal-version.png)
 
 Using this deployment ID you can query deployment information using the link `https://%WEBSITE_HOSTNAME%.scm.azurewebsites.net/api/deployments/<deployment id>` to see something like this:
 

@@ -9,7 +9,7 @@ categories:
 ---
 When you create a new web application in Visual Studio 2013 you can chose to enable Application Insights for it. Once enabled - JavaScript snippet will be inserted into page template document ```\Views\Shared\\_Layout.cshtml```:
 
-{% img /images/2014-11-28-javascript-snippet-and-instrumentation-key/javascript-snippet-in-_layout-cshtml.png %}
+![](/images/2014-11-28-javascript-snippet-and-instrumentation-key/javascript-snippet-in-_layout-cshtml.png)
 
 This JavaScript snippet will collect end user behavior information in portal. You may notice that Instrumentation Key is set to constant in this snippet:
 

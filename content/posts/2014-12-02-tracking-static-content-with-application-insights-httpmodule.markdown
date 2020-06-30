@@ -27,6 +27,6 @@ Since application insights is just a regular http module you can configure it ev
 </system.webServer>
 ```
 Once configured you'll start seeing static content as requests collected on portal:
-{% img /images/2014-12-02-tracking-static-content-with-application-insights-httpmodule/static-content.png 'static content' %}
+![static content](/images/2014-12-02-tracking-static-content-with-application-insights-httpmodule/static-content.png)
 
 Since this blog is statically generated using octopress and hosted as azure web site I plan to use this technique to monitor requests made to it. I'll post an update when will try it.

@@ -10,11 +10,11 @@ categories:
 ---
 I've returned from the [long](https://blogs.microsoft.com/blog/2015/08/05/the-employee-experience-at-microsoft-aligning-benefits-to-our-culture/) parental leave. Checking telemetry for this blog I noticed the new dependency call
 
-{% img /images/2016-06-13-have-you-been-hacked/01-single-dependency-call.png 'Single dependency call' %}
+![Single dependency call](/images/2016-06-13-have-you-been-hacked/01-single-dependency-call.png)
 
 Here is how it looks on Application map:
 
-{% img /images/2016-06-13-have-you-been-hacked/02-single-dependency-on-map.png 'Single dependency call on the map' %}
+![Single dependency call on the map](/images/2016-06-13-have-you-been-hacked/02-single-dependency-on-map.png)
 
 It scared me as there are no AJAXes in the blog. So my first thought - my blog was hacked. 
 

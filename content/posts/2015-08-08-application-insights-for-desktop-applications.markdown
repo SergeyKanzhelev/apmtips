@@ -60,10 +60,10 @@ telemetryClient.TrackEvent("TemperatureRequested",
 ```
 
 In the [Azure portal](http://portal/azure.com) you can open Metric Exporer and group events by zip code:
-{% img /images/2015-08-08-application-insights-for-desktop-applications/events-by-zip-settings.png 'Settings to show events by zip code' %}
+![Settings to show events by zip code](/images/2015-08-08-application-insights-for-desktop-applications/events-by-zip-settings.png)
 
 Once configured you'll see a view like this that can be saved as favourite view for later access: 
-{% img /images/2015-08-08-application-insights-for-desktop-applications/events-by-zip.png 'Events by zip code' %}
+![Events by zip code](/images/2015-08-08-application-insights-for-desktop-applications/events-by-zip.png)
 
 It was easy. Now let's say you want to decide whether you need to show a spinner to your customer while she is waiting for results. You wonder - how long does it typically take to display the temperature.
 

@@ -38,7 +38,7 @@ performanceCounters
 
 This query gave me this picture:
 
-{% img /images/2017-01-27-deployments-scale-ups-and-downs/long-time-deployments.png 'Long time deployments' %}
+![Long time deployments](/images/2017-01-27-deployments-scale-ups-and-downs/long-time-deployments.png)
 
 There are two regions this application is deployed to. Hence two general areas - 5 instances and 3 instances. You can also see the spikes when deployments were happening. You can also notice that staging slot doesn't last long. Spike is very short. Turns out that the staging computers are shut down as part of a release procedure. Typically you would see scaled down number of staging computers running all the time to speed up the rollback when it's needed. 
 
@@ -59,7 +59,7 @@ performanceCounters
 
 The result is quite interesting:
 
-{% img /images/2017-01-27-deployments-scale-ups-and-downs/single-deployment.png 'Single deployment' %}
+![Single deployment](/images/2017-01-27-deployments-scale-ups-and-downs/single-deployment.png)
 
 You can see the new version of an application deployed into the staging environment in one region and running for ~10 minutes. The same version was deployed in the staging of a different region for much shorter time. It seems that the production traffic started the application initialization after VIP swap. Which typically a bad practice, by the way. At least some smoke tests needs to be run against the staging slot to validate the configuration. 
 

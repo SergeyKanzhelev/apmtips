@@ -12,13 +12,13 @@ This blog post explains how to clone the dashboard and retarget it to the differ
 
 Let's say you have a **Dashboard A** for the component **A** and you want to create the same dashboard for component **B**. In my example I simply pinned the servers chart to the dashboard, but it may be way more [advanced](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-dashboards) in your case.
 
-{% img /images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/dashboard-a.png 'Dashboard A' %}
+![Dashboard A](/images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/dashboard-a.png)
 
 In order to clone the dashboard you need to [share](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-dashboards#share-dashboards) it first. Sharing places the dashboard definition into the resource group so you can see it in Azure Resource Management portal. 
 
 Once shared the URL for your dashboard will look like this: https://portal.azure.com/#dashboard/arm/subscriptions/6b984a40-aa54-452b-b975-acc3bf105fa7/resourcegroups/dashboards/providers/microsoft.portal/dashboards/7a2a64c5-a661-47c1-a1a3-afae823d7533. It includes subscription, resource group and dashboard unique name. Copy the dashbaord unique name (in this case `7a2a64c5-a661-47c1-a1a3-afae823d7533`) and find it at https://resources.azure.com 
 
-{% img /images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/find-dashboard-in-arm.png 'Find dashboard definition in ARM' %}
+![Find dashboard definition in ARM](/images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/find-dashboard-in-arm.png)
 
 Direct URL to your dashboard definition will look like this: https://resources.azure.com/subscriptions/6b984a40-aa54-452b-b975-acc3bf105fa7/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/7a2a64c5-a661-47c1-a1a3-afae823d7533
 
@@ -148,10 +148,10 @@ Then rename the dashboard:
 
 You can create the new dashboard in the ARM portal now. Type "DashboardB" as `{Resource Name}` and updated JSON as definition.
 
-{% img /images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/create-dashboard.png 'Create a dashboard' %}
+![Create a dashboard](/images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/create-dashboard.png)
 
 and start using your dashboard in the portal. Note, one perk of creating the dashboard manually is that the unique name of the dashboard you created is human readable, not the guid: https://portal.azure.com/#dashboard/arm/subscriptions/6b984a40-aa54-452b-b975-acc3bf105fa7/resourcegroups/dashboards/providers/microsoft.portal/dashboards/dashboardb
 
-{% img /images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/dashboard-b.png 'Dashboard B' %}
+![Dashboard B](/images/2017-03-23-clone-application-insights-dashboard-for-a-different-application/dashboard-b.png)
 
 With Azure Resource Management you can automate this process and configure dashboards update/deployments alongside with the application. So the monitoring configuration will be a part of your service definition. 

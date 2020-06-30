@@ -19,4 +19,4 @@ So it will be logical to expect that Application Insights SDK will be searching 
 
 This behavior caused some problems already. There were cases when some random ApplicationInsights.config file was deployed to the bin folder of web application as well as correct one into content folder. So modifications of configuration file you'd expect to be used will not take an effect:
 
-{% img /images/2014-12-23-applicationinsights-dot-config-file-search-order/ApplicationInsightsConfigSearchOrder.png 'ApplicationInsights.config search order' %}
+![ApplicationInsights.config search order](/images/2014-12-23-applicationinsights-dot-config-file-search-order/ApplicationInsightsConfigSearchOrder.png)

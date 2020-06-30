@@ -9,7 +9,7 @@ categories:
 ---
 In my previous post on [web requests tracking http module](/blog/2015/01/02/application-insights-requests-tracking-more-than-just-a-begin-and-end/) I mentioned that Application Insights http module has some smart logic to collect request name. This logic is needed to make meaningful aggregation on UI side. In the screenshot below you see that requests are grouped by request name.  Aggregations like number of requests and average execution time for requests were calculated for some pages. And those aggregations completely unusable for requests to "__browserLink":
 
-{%img /images/2015-02-23-requesdt-name-and-url/grouping-by-request-name.png 'Grouping by request name' %}
+![Grouping by request name](/images/2015-02-23-requesdt-name-and-url/grouping-by-request-name.png)
 
 Here is how request name calculation logic works today:
 

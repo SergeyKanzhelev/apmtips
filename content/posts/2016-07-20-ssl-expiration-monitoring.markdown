@@ -29,7 +29,7 @@ When you call http://webteststools.azurewebsites.net/certificate/apmtips.com/ - 
 
 So you can set up an Application Insights web test that will call that url and validate response:
 
-{% img /images/2016-07-20-ssl-expiration-monitoring/webtestconfig.png 'web test configuration' %}
+![web test configuration](/images/2016-07-20-ssl-expiration-monitoring/webtestconfig.png)
 
 Now when `"ExpiresIn10Days":false` will turn into `"ExpiresIn10Days":true` - alert will fire and there will be 10 more days to fix a certificate.
 

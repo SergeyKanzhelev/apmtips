@@ -37,8 +37,11 @@ Under the hood nuget will add reference to new assembly containing trace listene
 </system.diagnostics>
 ```
 Now when you running Web API methods you will not only see those methods as requests, but also traces associated with these requests. On my machine I just run application under debugger and called this GET method "http://localhost:57444/api/values" from browser. Here are result I see in [azure portal](http://portal.azure.com):
-{% img /images/2014-11-13-collect-asp-dot-net-mvc-web-api-traces-with-application-insights/Get-values-traces.png 'Get values request traces' %}
+
+![Get values request traces](/images/2014-11-13-collect-asp-dot-net-mvc-web-api-traces-with-application-insights/Get-values-traces.png)
+
 You see step by step execution of [Web API pipeline](http://www.asp.net/posters/web-api/asp.net-web-api-poster-grayscale.pdf) - in the portal traces are in reverse order:
+
 ```
 Request, Method=GET, Url=http://localhost:57444/api/values, Message='http://localhost:57444/api/values'
 Message='Values', Operation=DefaultHttpControllerSelector.SelectController
@@ -96,7 +99,7 @@ using (var stream = new StreamReader(request.GetResponse().GetResponseStream()))
 }
 ```
 And finally I started my application and... wait for it... got throttled on Application Insights endpoint. You can see 5 requests and 1.2K traces:
-{% img /images/2014-11-13-collect-asp-dot-net-mvc-web-api-traces-with-application-insights/Got-throttled.png 'Throttled after 1.2K' %}
+![Throttled after 1.2K](/images/2014-11-13-collect-asp-dot-net-mvc-web-api-traces-with-application-insights/Got-throttled.png)
 
 I looked at couple traces and quickly realized that I fall into recursion. First request to application was collected and generated Application Insights data item. This data item was compressed and sent to Application Insights using http call. This http call produced tons of traces (System.Net is quite chatty trace source). Those traces in turn were grouped into bunch, compressed and... sent using http that produced more http traces. In fact I was throttled even before a call to bing.com was traced ;-). Here is a trace message that helped me figure this out: 
 ```

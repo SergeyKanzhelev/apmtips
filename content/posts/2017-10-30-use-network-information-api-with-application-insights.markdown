@@ -37,11 +37,11 @@ appInsights.queue.push(() => {
 
 I'm traveling today. This picture shows what I saw in airport:
 
-{% img /images/2017-10-30-use-network-information-api-with-application-insights/network_in_airport.png  'Network in airport' %}
+![Network in airport](/images/2017-10-30-use-network-information-api-with-application-insights/network_in_airport.png )
 
 Once I connected to the internet in plane I see other values:
 
-{% img /images/2017-10-30-use-network-information-api-with-application-insights/network_in_plane.png  'Network in the plane' %}
+![Network in the plane](/images/2017-10-30-use-network-information-api-with-application-insights/network_in_plane.png )
 
 You can query analyze pageViews now using simple query:
 

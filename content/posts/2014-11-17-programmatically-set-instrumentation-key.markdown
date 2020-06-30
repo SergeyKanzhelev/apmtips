@@ -12,7 +12,7 @@ As telemetry became a part of engineering process I hear one question more and m
 Well, nobody knows the answer better then you. Application Telemetry SDK is flexible and gives you full controls over data and configure data collection the way you need it. There are couple ways to slice your data. In this article I'll explain how to separate telemetry data by sending it to different components. 
 
 Every component in Application Insights is represented by a single Instrumentation Key. You can get it in "properties" section of your component:
-{% img /images/2014-11-17-programmatically-set-instrumenttion-key/getinstrumentationkey.png 'Get instrumentation key in the portal' %}
+![Get instrumentation key in the portal](/images/2014-11-17-programmatically-set-instrumenttion-key/getinstrumentationkey.png)
 
 Easiest way to configure instrumentation key is to set it in ApplicationInsights.config. Whenever Application Insights will need to send data for the first time it will attempt to read instrumentation key from this config file. You can use ```TransformXml``` msbuild task to [automate the release pipeline](http://msdn.microsoft.com/en-us/library/dn449951.aspx). Here is config snippet you need to modify: 
 ``` xml
@@ -27,7 +27,7 @@ tc.TrackTrace("This trace goes to the default source");
 The best place to do it for web application is Global.asax before any telemetry data items were tracked. ***Note***, that if you'll attempt to send telemetry data item before instrumentation key was set ```TelemetryClient.Track[Foo]``` method will throw an exception.
 
 In both cases - using config or setting key programmatically you'll see data reported into the same component. This key will be used as default for all telemetry clients you'll instantiate.
-{% img /images/2014-11-17-programmatically-set-instrumenttion-key/defaultsourceevents.png 'Default events' %}
+![Default events](/images/2014-11-17-programmatically-set-instrumenttion-key/defaultsourceevents.png)
 
 There are situations when one default key is not enough. Scenarios I can imagine are:
 
@@ -50,7 +50,7 @@ tcDefault.TrackTrace(trace);
 
 ```
 Both code examples will send trace message to your custom application even though configuration file defines another instrumentation key.
-{% img /images/2014-11-17-programmatically-set-instrumenttion-key/customsourceevents.png 'CustomSource events' %}
+![CustomSource events](/images/2014-11-17-programmatically-set-instrumenttion-key/customsourceevents.png)
 
 Summary
 -------

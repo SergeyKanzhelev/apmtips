@@ -22,42 +22,42 @@ Ok, imagine you have an application. For example it may be Orchard CMS blog from
 
 - Create Azure WebSite from gallery. Use Orchard CMS as a template
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/01-create-orchard-app.png "create orchard1 application" %}
+![create orchard1 application](/images/2014-12-28-application-insights-extension-for-azure-websites/01-create-orchard-app.png)
 
 - Configure Orchard. I've used Azure SQL server as Application Insights wouldn't monitor SQL CE
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/02-configure-orchard.png "configure orchard"  %}
+![configure orchard](/images/2014-12-28-application-insights-extension-for-azure-websites/02-configure-orchard.png ""  %}
 
 - You can always connect to your web site using WebMatrix. Here magic starts. Download your web site locally
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/03-open-in-webmatrix.png "open in webmatrix" %}
+![open in webmatrix](/images/2014-12-28-application-insights-extension-for-azure-websites/03-open-in-webmatrix.png)
 
 - Once downloaded I created new web site on my local IIS server  
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/04-create-web-site-in-iis.png  "create web site in IIS" %}
+![create web site in IIS](/images/2014-12-28-application-insights-extension-for-azure-websites/04-create-web-site-in-iis.png )
 
 - This was a hack that I mentioned. Now as you have a web site on your local server you can use Status Monitor to add Application Insights to it
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/05-enable-application-insights-for-web-site.png  "enable application insights for web site" %}
+![enable application insights for web site](/images/2014-12-28-application-insights-extension-for-azure-websites/05-enable-application-insights-for-web-site.png )
 
 - Now when you'd attempt to upload changes - it will upload all changes Status Monitor did
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/06-upload-changes.png "upload changes" %}
+![upload changes](/images/2014-12-28-application-insights-extension-for-azure-websites/06-upload-changes.png)
 
 - I haven't installed extension for my Azure WebSite. So I see requests to Orchard CMS, but do not see dependencies yet
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/07-no-dependencies-yet.png  "no dependencies yet" %}
+![no dependencies yet](/images/2014-12-28-application-insights-extension-for-azure-websites/07-no-dependencies-yet.png )
 
 - Now you go to extensions blade and enable Application Insights extension
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/08-enable-extension.png  "enable extension" %}
+![enable extension](/images/2014-12-28-application-insights-extension-for-azure-websites/08-enable-extension.png )
 
 - Very next request to your azure web site will run a bit longer - Application Insights instrumenting your application. After this you most probably wouldn't notice the noise created by monitoring dependencies. You can see how long your Azure WebSite spent in every dependency. You can see that Orchard has two dependency out of the box - http and sql  
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/09-dependencies-chart.png  "dependencies chart" %}
+![dependencies chart](/images/2014-12-28-application-insights-extension-for-azure-websites/09-dependencies-chart.png )
 
 - You can also see what exact external calls were made for every particular request:
 
-{% img /images/2014-12-28-application-insights-extension-for-azure-websites/10-dependencies-for-request.png "dependencies for request" %}
+![dependencies for request](/images/2014-12-28-application-insights-extension-for-azure-websites/10-dependencies-for-request.png)
 
 It is very easy to use Application Insights Azure WebSite extension. It is also easy to configure Application Insights from Visual Studio. You can also enable Application Insights to your web site even if you cannot recompile it - Status Monitor and a simple hack - registering it in local IIS - will help you. 

@@ -15,7 +15,7 @@ If you see no data and you already checked that correct instrumentation key is s
 
 But it may be so that Application Insights is partially functional: channel is working and sending telemetry out but not all events are delivered. For example, you configured custom counter but you do not see it. If counter is configured incorrectly ETW event will be logged and you will actually be able to find Application Insights trace telemetry it in your Search explorer:
 
-{% img /images/2015-11-8-application-insights-self-diagnostic/SearchExplorer.PNG 'Application Insights diagnostic traces' %}
+![Application Insights diagnostic traces](/images/2015-11-8-application-insights-self-diagnostic/SearchExplorer.PNG)
 
 Why did you get this even as trace telemetry?
 

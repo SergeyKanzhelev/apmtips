@@ -85,5 +85,5 @@ pageViews
 
 Here is the result view:
 
-{% img /images/2017-04-25-ip-lookup/day-night-piechart.png 'day vs night' %}
+![day vs night](/images/2017-04-25-ip-lookup/day-night-piechart.png)
 

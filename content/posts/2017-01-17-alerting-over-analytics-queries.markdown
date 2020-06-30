@@ -64,7 +64,7 @@ https://api.applicationinsights.io/beta/apps/cbf775c7-b52e-4533-8673-bd6fbd7ab04
 
 Final step will be to set up a ping test that will query this Url and make a content match success criteria to search for the keyword `PASSED`.
 
-{% img /images/2017-01-17-alerting-over-analytics-queries/edit-webtest.png 'Edit webtest' %}
+![Edit webtest](/images/2017-01-17-alerting-over-analytics-queries/edit-webtest.png)
 
 You can change queries to satisfy other requests. You can query `customEvents` by `name` same way as I queried `pageViews` by `url`. You can set an alert when CPU is very high at least on one instance instead of standard averge across all instances:
 

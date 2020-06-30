@@ -112,11 +112,11 @@ new TelemetryClient() { InstrumentationKey = SINGLE_INSTRUMENTATION_KEY }.Track(
 
 Multi-role Application Map is in preview now. So in order to see it you'd need to enable it as shown on the picture:
 
-{% img /images/2017-10-18-two-types-of-correlation/enable-role-based-map.png  'Enable Multi-Role Application Map' %}
+![Enable Multi-Role Application Map](/images/2017-10-18-two-types-of-correlation/enable-role-based-map.png )
 
 Result of the code execution looks something like this picture:
 
-{% img /images/2017-10-18-two-types-of-correlation/role-based-app-map.png  'Multi-Role Application Map' %}
+![Multi-Role Application Map](/images/2017-10-18-two-types-of-correlation/role-based-app-map.png )
 
 You can see that every component of your application is represented as a separate node on Application Map. However an important limitation of this approach is that it only works when every component uses the same instrumentation key. The main reason for this limitation is that Application Insights [did not support](https://feedback.azure.com/forums/357324-application-insights/suggestions/15165558-support-for-cross-ikey-cross-application-queries) cross applications joins for long time. 
 
@@ -131,7 +131,7 @@ This approach is used for the cross instrumentation key application map. This di
 - Component A sends its Application Insights identity with request…
 - … and expect the target component B to send its identity back
 
-{% img /images/2017-10-18-two-types-of-correlation/app-id-propagation-diagram.png  'App ID propagation diagram' %}
+![App ID propagation diagram](/images/2017-10-18-two-types-of-correlation/app-id-propagation-diagram.png )
 
 Knowing identity of the component allows to pre-aggregate metrics and make sure that even rare calls to a certain dependent component are not sampled out.
 
@@ -239,7 +239,7 @@ new TelemetryClient() { InstrumentationKey = API_SERVICE_INSTRUMENTATION_KEY }.T
 
 This picture shows how application map looks like:
 
-{% img /images/2017-10-18-two-types-of-correlation/multi-ikey-app-map.png  'Multi-ikey Application Map' %}
+![Multi-ikey Application Map](/images/2017-10-18-two-types-of-correlation/multi-ikey-app-map.png )
 
 
 ## Future directions

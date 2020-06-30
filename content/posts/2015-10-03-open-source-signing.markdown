@@ -72,22 +72,20 @@ private key. (Exception from HRESULT: 0x80131045)
 
 The issue explained in details at [IIS forum](http://forums.iis.net/t/1220602.aspx?Skipping+Strong+Name+Assembly+for+Windows+7+IIS+7+5+still+give+an+error+Couldn+t+be+Verified+).
 
-{% blockquote %}
-When using .NET 4, shadow copying assemblies in an application for which assemblies rarely ever change has improved. In previous versions of ASP.NET, there was often a noticeable delay in application startup time while assemblies were being shadow copied. Now, the framework checks the file date/time of an application’s assemblies and compares that with the file date/time of any shadow copied assemblies. If they are the same, the shadow copying process does not occur. This causes the shadow copying process to kick off only if an assembly has been physically modified.
-
-The process would look something like this for each assembly:
-1. Copy assembly from application location to temporary location 
-2. Open assembly 
-3. Verify assembly name 
-4. Validate strong name 
-5. Compare update to current cached assembly 
-6. Copy to shadow copy location (if newer) 
-7. Remove assembly from temporary location 
-
-Shadow copying is important if you are modifying assemblies directly in a live application.
-
-But if  you want to skip strong name assembly, you must disable  shadow copying.
-{% endblockquote %}
+> When using .NET 4, shadow copying assemblies in an application for which assemblies rarely ever change has improved. In previous versions of ASP.NET, there was often a noticeable delay in application startup time while assemblies were being shadow copied. Now, the framework checks the file date/time of an application’s assemblies and compares that with the file date/time of any shadow copied assemblies. If they are the same, the shadow copying process does not occur. This causes the shadow copying process to kick off only if an assembly has been physically modified.
+> 
+> The process would look something like this for each assembly:
+> 1. Copy assembly from application location to temporary location 
+> 2. Open assembly 
+> 3. Verify assembly name 
+> 4. Validate strong name 
+> 5. Compare update to current cached assembly 
+> 6. Copy to shadow copy location (if newer) 
+> 7. Remove assembly from temporary location 
+> 
+> Shadow copying is important if you are modifying assemblies directly in a live application.
+> 
+> But if  you want to skip strong name assembly, you must disable  shadow copying.
 
 So you need to disable shadow copying for your ASP.NET application in ```web.config```:
 

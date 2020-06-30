@@ -17,7 +17,7 @@ The Application Insights web SDK comes with two default telemetry initializers -
 ```
 These initializers are used to mark every collected telemetry item with the current web request identity so that traces and exception can be correlated to corresponding requests:
 
-{% img /images/2014-12-01-telemetry-initializers/trace-for-request.png 'trace for request' %}
+![trace for request](/images/2014-12-01-telemetry-initializers/trace-for-request.png)
 
 The trace telemetry in this example, has the following context populated by telemetry initializers mentioned above: 
 ``` json
@@ -60,7 +60,7 @@ This is what every data item will be marked with after you start your applicatio
 
 And here is how it looks like in UI:
 
-{% img /images/2014-12-01-telemetry-initializers/new-properties.png 'new properties' %}
+![new properties](/images/2014-12-01-telemetry-initializers/new-properties.png)
 
 Telemetry initializers are a powerful, but dangerous tool. They are called synchronously and block program execution flow; if written poorly they can harm application performance.
 
