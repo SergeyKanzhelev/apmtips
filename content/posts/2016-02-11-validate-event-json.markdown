@@ -3,7 +3,7 @@ layout: post
 title: "Validate event json"
 date: 2016-02-11 23:45:35 -0800
 comments: true
-aliases: [/blog/2016-02-11-validate-event-json/]
+aliases: [/blog/2016/02/11/validate-event-json/]
 categories:
 - Application Insights
 - Troubleshooting 

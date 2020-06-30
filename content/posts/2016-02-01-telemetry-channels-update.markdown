@@ -3,7 +3,7 @@ layout: post
 title: "Telemetry channels update"
 date: 2016-02-01 00:00:00 -0700
 comments: true
-aliases: [/blog/2016-02-01-telemetry-channels-update/]
+aliases: [/blog/2016/02/01/telemetry-channels-update/]
 categories:
 - Application Insights
 ---

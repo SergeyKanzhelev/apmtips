@@ -3,7 +3,7 @@ layout: post
 title: "Where are the telemetry context properties?"
 date: 2015-04-11 12:49:46 -0700
 comments: true
-aliases: [/blog/2015-04-11-where-are-the-telemetry-context-properties/]
+aliases: [/blog/2015/04/11/where-are-the-telemetry-context-properties/]
 categories: 
 ---
 Recently the change was made. Upgrading from Application Insights SDK version [0.13](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/0.13.3-build03939) to the version [0.14](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/0.14.0-build20632) you may notice that some public interfaces were changed. Specifically, public property ```Properties``` was removed from ```TelemetryContext``` class. Yes, one that mentioned in the [documentation](http://azure.microsoft.com/en-us/documentation/articles/app-insights-web-track-usage-custom-events-metrics/#defaults) and [blog post](http://blogs.msdn.com/b/visualstudioalm/archive/2015/01/07/application-insights-support-for-multiple-environments-stamps-and-app-versions.aspx). One that is very important to enable many scenarios.

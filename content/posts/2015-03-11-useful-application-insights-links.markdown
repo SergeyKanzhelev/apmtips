@@ -3,7 +3,7 @@ layout: post
 title: "useful application insights links"
 date: 2015-03-11 17:04:50 -0700
 comments: true
-aliases: [/blog/2015-03-11-useful-application-insights-links/]
+aliases: [/blog/2015/03/11/useful-application-insights-links/]
 categories:
 - Application Insights 
 ---

@@ -3,7 +3,7 @@ layout: post
 title: "Open source signing"
 date: 2015-10-03 18:55:21 -0700
 comments: true
-aliases: [/blog/2015-10-03-open-source-signing/]
+aliases: [/blog/2015/10/03/open-source-signing/]
 categories: 
 - Application Insights
 - Development

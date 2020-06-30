@@ -3,7 +3,7 @@ layout: post
 title: "Performance Counters Today"
 date: 2016-08-02 21:56:12 -0700
 comments: true
-aliases: [/blog/2016-08-02-performance-counters-today/]
+aliases: [/blog/2016/08/02/performance-counters-today/]
 categories: 
 published: false
 ---

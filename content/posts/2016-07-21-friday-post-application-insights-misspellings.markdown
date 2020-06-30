@@ -3,7 +3,7 @@ layout: post
 title: "Friday post - Application Insights misspellings"
 date: 2016-07-21 23:42:15 -0700
 comments: true
-aliases: [/blog/2016-07-21-friday-post-application-insights-misspellings/]
+aliases: [/blog/2016/07/21/friday-post-application-insights-misspellings/]
 categories: 
 ---
 Here is the list of popular misspellings of Application Insights. Welcome to my blog if you found this post by searching one of those. Here are some Application Insights [links](http://apmtips.com/ai-links/) for you. 

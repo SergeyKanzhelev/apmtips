@@ -3,7 +3,7 @@ layout: post
 title: "Request success and response code"
 date: 2016-12-03 17:11:24 -0800
 comments: true
-aliases: [/blog/2016-12-03-request-success-and-response-code/]
+aliases: [/blog/2016/12/03/request-success-and-response-code/]
 categories: 
 ---
 Application Inisghts monitors web application requests. This article explains the difference between two fields representing the [request](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Bond/RequestData.bond#L6) - `success` and `responseCode`.

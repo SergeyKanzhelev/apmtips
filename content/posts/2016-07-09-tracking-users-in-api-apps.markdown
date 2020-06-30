@@ -3,7 +3,7 @@ layout: post
 title: "tracking users in API apps"
 date: 2016-07-09 23:54:13 -0700
 comments: true
-aliases: [/blog/2016-07-09-tracking-users-in-api-apps/]
+aliases: [/blog/2016/07/09/tracking-users-in-api-apps/]
 categories: 
 ---
 Triaging and diagnosing issues you need to correlate telemetry with the user. You may want to understand the impact of a failing dependency (like a percent of affected users) or look up all pages visited by the user before the failure occurred.

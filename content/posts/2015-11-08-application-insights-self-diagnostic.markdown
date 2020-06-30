@@ -3,7 +3,7 @@ layout: post
 title: "Application Insights self-diagnostics"
 date: 2015-11-08 00:00:00 -0700
 comments: true
-aliases: [/blog/2015-11-08-application-insights-self-diagnostic/]
+aliases: [/blog/2015/11/08/application-insights-self-diagnostic/]
 categories:
 - Application Insights
 ---

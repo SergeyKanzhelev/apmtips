@@ -3,7 +3,7 @@ layout: post
 title: "You need this nuget.config"
 date: 2015-11-17 09:01:42 -0800
 comments: true
-aliases: [/blog/2015-11-17-you-need-this-nuget-dot-config/]
+aliases: [/blog/2015/11/17/you-need-this-nuget-dot-config/]
 categories:
 - random 
 ---

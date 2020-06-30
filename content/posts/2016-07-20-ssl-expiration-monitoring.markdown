@@ -3,7 +3,7 @@ layout: post
 title: "SSL expiration monitoring"
 date: 2016-07-20 00:53:01 -0700
 comments: true
-aliases: [/blog/2016-07-20-ssl-expiration-monitoring/]
+aliases: [/blog/2016/07/20/ssl-expiration-monitoring/]
 categories:
 - Hacking availability tests  
 ---

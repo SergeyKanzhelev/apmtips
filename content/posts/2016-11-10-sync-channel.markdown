@@ -3,7 +3,7 @@ layout: post
 title: "Sync channel"
 date: 2016-11-10 10:15:00 -0800
 comments: true
-aliases: [/blog/2016-11-10-sync-channel/]
+aliases: [/blog/2016/11/10/sync-channel/]
 categories: 
 ---
 

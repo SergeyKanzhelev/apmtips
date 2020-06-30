@@ -3,7 +3,7 @@ layout: post
 title: "status monitor for cloud services"
 date: 2015-03-05 22:00:36 -0800
 comments: true
-aliases: [/blog/2015-03-05-status-monitor-for-cloud-services/]
+aliases: [/blog/2015/03/05/status-monitor-for-cloud-services/]
 categories: 
 - Application Insights
 ---

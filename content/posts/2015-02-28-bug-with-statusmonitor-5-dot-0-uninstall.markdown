@@ -3,7 +3,7 @@ layout: post
 title: "bug with StatusMonitor 5.0 uninstall"
 date: 2015-02-28 08:53:35 -0800
 comments: true
-aliases: [/blog/2015-02-28-bug-with-statusmonitor-5-dot-0-uninstall/]
+aliases: [/blog/2015/02/28/bug-with-statusmonitor-5-dot-0-uninstall/]
 categories: 
 - Application Insights
 - troubleshooting

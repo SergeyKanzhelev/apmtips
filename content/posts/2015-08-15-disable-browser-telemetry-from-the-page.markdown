@@ -3,7 +3,7 @@ layout: post
 title: "Disable browser telemetry from the page"
 date: 2015-08-15 15:20:38 -0700
 comments: true
-aliases: [/blog/2015-08-15-disable-browser-telemetry-from-the-page/]
+aliases: [/blog/2015/08/15/disable-browser-telemetry-from-the-page/]
 categories:
 - Application Insights
 - Javascript 

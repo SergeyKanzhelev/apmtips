@@ -3,7 +3,7 @@ layout: post
 title: "Not all ticks are the same and other misleading names"
 date: 2015-02-26 09:15:19 -0800
 comments: true
-aliases: [/blog/2015-02-26-not-all-ticks-are-the-same-and-other-misleading-names/]
+aliases: [/blog/2015/02/26/not-all-ticks-are-the-same-and-other-misleading-names/]
 published: false
 categories: 
 ---

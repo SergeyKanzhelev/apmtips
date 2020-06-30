@@ -3,7 +3,7 @@ layout: post
 title: "client IP address"
 date: 2016-07-05 23:15:31 -0700
 comments: true
-aliases: [/blog/2016-07-05-client-ip-address/]
+aliases: [/blog/2016/07/05/client-ip-address/]
 categories: 
 ---
 Client IP address is useful for some telemetry scenarios. You may discover very high latency from remote countries or the reason for a requests count spike in the night when countries across the ocean woke up.

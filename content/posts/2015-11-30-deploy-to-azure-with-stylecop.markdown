@@ -3,7 +3,7 @@ layout: post
 title: "Deploy to Azure with StyleCop"
 date: 2015-11-30 14:07:11 -0800
 comments: true
-aliases: [/blog/2015-11-30-deploy-to-azure-with-stylecop/]
+aliases: [/blog/2015/11/30/deploy-to-azure-with-stylecop/]
 categories: 
 ---
 I was working on enabling continues deployment from GitHub to Azure WebApp for the sample Glimpse and Application Insights integration application. It is easy to implement this integration. Simplest way is to create "Deploy to Azure" button in your GitHub repository like I explained in [this blog post](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx). You can also do it manually:

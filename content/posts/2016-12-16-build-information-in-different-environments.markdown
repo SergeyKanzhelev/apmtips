@@ -3,7 +3,7 @@ layout: post
 title: "Build information in different environments"
 date: 2016-12-16 10:08:23 -0800
 comments: true
-aliases: [/blog/2016-12-16-build-information-in-different-environments/]
+aliases: [/blog/2016/12/16/build-information-in-different-environments/]
 categories: 
 - Versioning
 ---

@@ -3,7 +3,7 @@ layout: post
 title: "Have you been hacked?"
 date: 2016-06-13 14:06:15 -0700
 comments: true
-aliases: [/blog/2016-06-13-have-you-been-hacked/]
+aliases: [/blog/2016/06/13/have-you-been-hacked/]
 categories: 
 - Application Insights
 - Security

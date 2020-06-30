@@ -3,7 +3,7 @@ layout: post
 title: "operational insights agent for SCOM"
 date: 2015-09-11 09:28:02 -0700
 comments: true
-aliases: [/blog/2015-09-11-operational-insights-agent-for-scom/]
+aliases: [/blog/2015/09/11/operational-insights-agent-for-scom/]
 categories:
 - SCOM
 - Application Insights 

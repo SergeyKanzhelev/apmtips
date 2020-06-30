@@ -3,7 +3,7 @@ layout: post
 title: "more telemetry channels"
 date: 2015-09-03 09:12:44 -0700
 comments: true
-aliases: [/blog/2015-09-03-more-telemetry-channels/]
+aliases: [/blog/2015/09/03/more-telemetry-channels/]
 categories: 
 - Application Insights
 ---

@@ -3,7 +3,7 @@ layout: post
 title: "Fast OPTIONS response using Url Rewrite"
 date: 2017-01-31 22:48:26 -0800
 comments: true
-aliases: [/blog/2017-01-31-fast-options-response-using-url-rewrite/]
+aliases: [/blog/2017/01/31/fast-options-response-using-url-rewrite/]
 categories: 
 - Hacking availability tests 
 ---
