@@ -3,3 +3,30 @@ languageCode = "en-us"
 title = "APM tips"
 theme = "soho"
 disqusShortname = "apmtips"
+
+summarylength = 10
+enableEmoji = true
+
+googleAnalytics = "UA-56791310-1"
+
+gravatar = "S.Kanzhelev@live.com"
+
+copyright = "Sergey Kanzhelev"
+license = "Apache 2.0"
+licenseURL = "http://www.apache.org/licenses/LICENSE-2.0"
+
+  ## Set as many as you want.
+  [[params.socialIcons]]
+  icon = "fa-linkedin"
+  title = "Linkedin"
+  url = "https://www.linkedin.com/in/sergeykanzhelev/"
+
+  [[params.socialIcons]]
+  icon = "fa-github"
+  title = "GitHub"
+  url = "http://github.com/SergeyKanzhelev/"
+
+  [[params.socialIcons]]
+  icon = "fa-twitter"
+  title = "Twitter"
+  url = "http://twitter.com/SergeyKanzhelev"
