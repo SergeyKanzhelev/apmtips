@@ -40,6 +40,8 @@ spec:
   - match:
     - uri:
         exact: /apmtips
+    - uri:
+        prefix: /images
     route:
     - destination:
         host: apmtips-svc
