@@ -24,8 +24,8 @@ spec:
   - apmtips-gateway
   http:
   - match:
-    - scheme:
-        exact: GET
+    - uri:
+        exact: /apmtips
     route:
     - destination:
         host: apmtips
