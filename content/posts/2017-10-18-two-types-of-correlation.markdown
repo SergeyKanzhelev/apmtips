@@ -22,7 +22,7 @@ When you have an Application Map is in a form of a star, you may notice that som
 ```
 dependencies 
   | join requests on $left.id == $right.operation_ParentId 
-  | summarize sum(itemCount) by from = cloud_RoleName1, to = cloud_RoleName
+  | summarize sum(itemCount) by from = cloud_RoleName, to = cloud_RoleName1
 ```
 
 This query joins outgoing from component `A` dependency call to the request incoming to the component `B`. Now you can see a map where every node is a separate `cloud_RoleName`. Note, that some of dependency calls are made to external components. To draw those you'd still need to use a target field from before. With the slight modification - you need to group it by `cloud_roleName`:
