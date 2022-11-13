@@ -15,7 +15,7 @@ author = "Sergey Kanzhelev"
 description = "APM tips"
 
 ## Set one of:
-gravatar = "S.Kanzhelev@live.com"
+# gravatar = "S.Kanzhelev@live.com"
 profilePicture = "images/kanzhelev.jpg"
 
 copyright = "Sergey Kanzhelev"
