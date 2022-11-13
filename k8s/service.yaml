@@ -8,9 +8,11 @@ metadata:
   labels:
     app: apmtips
 spec:
-  backend:
-    serviceName: apmtips
-    servicePort: 80
+  defaultBackend:
+    service:
+      name: apmtips
+      port:
+        number: 80
 ---
 kind: Service
 apiVersion: v1
