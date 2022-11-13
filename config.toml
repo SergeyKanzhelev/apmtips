@@ -1,6 +1,7 @@
 baseURL = "https://apmtips.com/"
-languageCode = "en-us"
+languageCode = "en"
 title = "APM tips"
+enableInlineShortcodes = true
 theme = "soho"
 disqusShortname = "apmtips"
 
@@ -9,24 +10,69 @@ enableEmoji = true
 
 googleAnalytics = "UA-56791310-1"
 
+[params]
+author = "Sergey Kanzhelev"
+description = "APM tips"
+
+## Set one of:
 gravatar = "S.Kanzhelev@live.com"
+profilePicture = "images/profile.png"
 
 copyright = "Sergey Kanzhelev"
 license = "Apache 2.0"
 licenseURL = "http://www.apache.org/licenses/LICENSE-2.0"
 
+## Set custom theme color.
+# themeColor = "#fc2803"
+
+## Set custom CSS and/or JS to override site defaults.
+# customCss = ["css/blog.css"]
+# customJs = ["js/blog.js"]
+
   ## Set as many as you want.
   [[params.socialIcons]]
   icon = "fa-linkedin"
   title = "Linkedin"
-  url = "https://www.linkedin.com/in/sergeykanzhelev/"
+  url = "#"
 
   [[params.socialIcons]]
   icon = "fa-github"
   title = "GitHub"
-  url = "http://github.com/SergeyKanzhelev/"
+  url = "#"
 
   [[params.socialIcons]]
   icon = "fa-twitter"
   title = "Twitter"
-  url = "http://twitter.com/SergeyKanzhelev"
+  url = "#"
+
+[menu]
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 100
+  identifier = "posts"
+  url = "/posts/"
+
+  [[menu.main]]
+  name = "About"
+  identifier = "about"
+  weight = 300
+  url = "/about/"
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[markup]
+
+  [markup.highlight]
+  codeFences = true
+  guessSyntax = false
+  hl_Lines = ""
+  lineNoStart = 1
+  lineNos = false
+  lineNumbersInTable = true
+  noClasses = true # if false, you need to provide you own custom CSS
+  style = "monokai"
+  tabWidth = 4
