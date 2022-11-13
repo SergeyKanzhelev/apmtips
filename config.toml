@@ -16,7 +16,7 @@ description = "APM tips"
 
 ## Set one of:
 gravatar = "S.Kanzhelev@live.com"
-#profilePicture = "images/profile.png"
+profilePicture = "images/kanzhelev.jpg"
 
 copyright = "Sergey Kanzhelev"
 license = "Apache 2.0"
