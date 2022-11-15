@@ -13,6 +13,16 @@ spec:
       name: apmtips
       port:
         number: 80
+  rules:
+  - http:
+      paths:
+      - path: /triage
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: k8s-triage
+            port:
+              number: 80
 ---
 kind: Service
 apiVersion: v1
