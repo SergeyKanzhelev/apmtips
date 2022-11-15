@@ -14,7 +14,18 @@ spec:
       port:
         number: 80
   rules:
-  - http:
+  - host: "*.apmtips.com"
+    http:
+      paths:
+      - path: /triage
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: k8s-triage
+            port:
+              number: 80
+  - host: "apmtips.com"
+    http:
       paths:
       - path: /triage
         pathType: ImplementationSpecific
