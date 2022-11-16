@@ -18,7 +18,7 @@ spec:
     http:
       paths:
       - path: /triage
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: k8s-triage
@@ -28,7 +28,7 @@ spec:
     http:
       paths:
       - path: /triage
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: k8s-triage
