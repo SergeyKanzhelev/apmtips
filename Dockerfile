@@ -2,7 +2,7 @@
 
 # Remember to target specific version in your base image,
 # because you want reproducibility (in a few years you will thank me)
-FROM alpine:3.9 AS build
+FROM alpine:3.18 AS build
 
 # The Hugo version
 ARG VERSION=0.103.0
@@ -27,7 +27,7 @@ RUN ls public -la
 RUN ls themes -la
 
 # stage 2
-FROM nginx:1.15-alpine
+FROM nginx:1.25-alpine
 
 WORKDIR /usr/share/nginx/html/
 
